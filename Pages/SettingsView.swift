@@ -135,7 +135,7 @@ struct SettingsView: View {
                                                     .font(.title)
                                              Spacer()
                                             }
-                                            Text("We're sorry to see you leave. You can always leave feedback on the App Store if you don't like something")
+                                            Text("We're sorry to see you leave. You can always leave feedback on the App Store if you don't like something.")
                                                 .fontWeight(.ultraLight)
                                           
                                             Section {
