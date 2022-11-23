@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 import AVKit
 
-var thisPost = PostsData(id: "", username: "", post: "", date: "", imageURL: "", reported: false, videoURL: "", pfp: "", verified: false)
+var thisPost = PostsData(id: "", username: "", post: "", date: "", imageURL: "", reported: false, pfp: "", verified: false)
 struct PostsView: View {
     @State var page = 4
     @ObservedObject var model = UserModel()
@@ -97,19 +97,7 @@ struct PostsView: View {
                                         }
                                     }
                                 }
-                                
-                                if let u = URL(string: postO.videoURL) {
-                                    VideoPlayer(player: AVPlayer(url:  URL(string: "\(postO.videoURL)")!)) {
-                                        VStack {
-                                            Text("Watermark")
-                                                .foregroundColor(.black)
-                                                .background(.white.opacity(0.7))
-                                            Spacer()
-                                        }
-                                        
-                                    }
-                                    
-                                }
+                       
                                 
                                 Text("\(postO.post)")
                                 

@@ -68,12 +68,12 @@ class PostsModel: ObservableObject {
         
     }
     
-    func addData(username: String, post: String, date: String, reported: Bool, imageURL: String, videoURL: String, pfp: String, verified: Bool) {
+    func addData(username: String, post: String, date: String, reported: Bool, imageURL: String, pfp: String, verified: Bool) {
         
         // Get a reference to the database
         let db = Firestore.firestore()
         // Add a document to a collection
-        db.collection("posts").addDocument(data: ["username": username, "post": post, "date": date, "reported": reported, "imageURL": imageURL, "videoURL": videoURL, "pfp": pfp, "verified": verified]) { error in
+        db.collection("posts").addDocument(data: ["username": username, "post": post, "date": date, "reported": reported, "imageURL": imageURL, "pfp": pfp, "verified": verified]) { error in
             // We don't have to worry about the ID for this new document because it'll automatically be generated
             
             // data is stored in a dictionary, with the data label followed by the value, which in this
@@ -123,7 +123,7 @@ class PostsModel: ObservableObject {
                         
                         
                       // Create a Todo item for each document returned
-                            return PostsData(id: doc.documentID, username: doc["username"] as? String ?? "", post: doc["post"] as? String ?? "", date: doc["date"] as? String ?? "", imageURL: doc["imageURL"] as? String ?? "", reported: doc["reported"] as? Bool ?? false, videoURL: doc["videoURL"] as? String ?? "", pfp: doc["pfp"] as? String ?? "", verified: doc["verified"] as? Bool ?? false)
+                            return PostsData(id: doc.documentID, username: doc["username"] as? String ?? "", post: doc["post"] as? String ?? "", date: doc["date"] as? String ?? "", imageURL: doc["imageURL"] as? String ?? "", reported: doc["reported"] as? Bool ?? false, pfp: doc["pfp"] as? String ?? "", verified: doc["verified"] as? Bool ?? false)
                     }
                     }
                 }

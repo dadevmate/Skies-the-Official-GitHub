@@ -15,7 +15,6 @@ struct PostsData: Identifiable {
     var date: String
     var imageURL: String
     var reported: Bool
-    var videoURL: String
     var pfp: String
     var verified: Bool
 }

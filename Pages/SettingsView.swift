@@ -11,9 +11,14 @@ import SwiftUI
 
 struct SettingsView: View {
     @State var page = 3
+    @ObservedObject var commModel = CommModel()
+    @ObservedObject var messageModel = MessageModel()
+    @ObservedObject var postsModel = PostsModel()
     @ObservedObject var model = UserModel()
     @StateObject var network = Network()
+    @ObservedObject var commentsModel = CommentsModel()
     @ObservedObject var aboutModel = AboutModel()
+    @ObservedObject var delUserModel = DeletedUserModel()
     @AppStorage("username") var username = ""
     @AppStorage("person") var person = ""
     @AppStorage("savedBio") var savedBio = ""
@@ -57,6 +62,15 @@ struct SettingsView: View {
                                     }
                                     .alert("Are you sure you wanna log out?", isPresented: $sureLogOut) {
                                         Button("Yes") {
+                                           
+                                            username = ""
+                                            person = ""
+                                            savedBio = ""
+                                            savedFavourites = ""
+                                            savedHobbies = ""
+                                            savedMediaLink = ""
+                                            savedProfilePic = ""
+                                            
                                             newUser = true
                                         }
                                         
@@ -146,19 +160,58 @@ struct SettingsView: View {
                                                     Button("Yes") {
                                                         if deleteText == username {
                                                             
-                                                            for userie in model.list {
-                                                                if userie.username == username {
-                                                                    model.deleteData(user: userie)
-                                                                    newUser = true
+                                                          
+                                                            
+                                                            for post in postsModel.list {
+                                                                if post.username == username {
+                                                                    postsModel.deleteData(postToDelete: post)
                                                                 }
                                                             }
                                                             
+                                                            for about in aboutModel.list {
+                                                                if about.username == username {
+                                                                    aboutModel.deleteData(aboutToDelete: about)
+                                                                }
+                                                            }
+                                                            
+                                                            for post in postsModel.list {
+                                                                
+                                                                for comment in commentsModel.list {
+                                                                    if comment.username == username {
+                                                                        commentsModel.deleteData(thepost: post, commentToDelete: comment)
+                                                                    }
+                                                                }
+                                                            }
+                                                            
+                                                            for comm in commModel.list {
+                                                                for message in messageModel.list {
+                                                                    if message.username == username {
+                                                                        messageModel.deleteData(theComm: comm, messageToDelete: message)
+                                                                    }
+                                                                }
+                                                            }
+                                                            for userie in model.list {
+                                                                if userie.username == username {
+                                                                    model.deleteData(user: userie)
+                                                                    delUserModel.addData(username: userie.username)
+                                                                    newUser = true
+                                                                    print("DONE")
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                     Spacer()
                                                 }
                                             } header: {
                                                 Text("Type your username in to confirm")
+                                            }
+                                            
+                                            
+                                            HStack {
+                                                Spacer()
+                                                Text("When you delete an account, all data associated with it will be deleted from our database. Your account and about posts will be deleted immediately, while your posts, comments and messages will be deleted within the next 1 to 3 business days, manually.")
+                                                    .fontWeight(.light)
+                                                Spacer()
                                             }
                                             
                                         }

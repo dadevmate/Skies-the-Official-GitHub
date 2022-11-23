@@ -117,6 +117,8 @@ struct MessageView: View {
                     }
                     .onAppear {
                         network.checkConnection()
+                     
+                        
                     }
                     .refreshable {
                         network.checkConnection()
@@ -128,11 +130,12 @@ struct MessageView: View {
                     })
                     .onReceive(timer) { time in
                         messageModel.getData(comm: thisComm)
-                        messageModel.order(comm: thisComm)
+                       
+                    
                         timeRemaining = 0.2
                     }
                     
-                    TextField("Add an image link", text: $imageLink)
+                    TextField("Add an image link (optional)", text: $imageLink)
                         .focused($focus)
                         .border(Color.gray)
                         .padding()
@@ -282,6 +285,9 @@ struct MessageView: View {
     
     init() {
         messageModel.getData(comm: thisComm)
+        messageModel.order(comm: thisComm)
+      
+        
     }
 }
 

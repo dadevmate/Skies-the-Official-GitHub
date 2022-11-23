@@ -149,7 +149,7 @@ struct SocialView: View {
                                     
                                     
                                 }
-                                TextField("A Video URL (optional)", text: $videoLink)
+                              
                                 HStack {
                                     Spacer()
                                     Button("Post") {
@@ -207,7 +207,7 @@ struct SocialView: View {
                                                 
                                                 for userie in model.list {
                                                     if userie.username == username {
-                                                        postsModel.addData(username: username, post: actualPost, date: "\(day)/\(month)/\(year)", reported: false, imageURL: imageLink, videoURL: videoLink, pfp: "\(userie.pfp)", verified: userie.verified)
+                                                        postsModel.addData(username: username, post: actualPost, date: "\(day)/\(month)/\(year)", reported: false, imageURL: imageLink, pfp: "\(userie.pfp)", verified: userie.verified)
                                                     }
                                                 }
                                                 posts.append(actualPost)
@@ -290,17 +290,7 @@ struct SocialView: View {
                                                             }
                                                         }
                                                         
-                                                        if let u = URL(string: post.videoURL) {
-                                                            VideoPlayer(player: AVPlayer(url:  URL(string: "\(post.videoURL)")!)) {
-                                                                VStack {
-                                                                    Text("Watermark")
-                                                                        .foregroundColor(.black)
-                                                                        .background(.white.opacity(0.7))
-                                                                    Spacer()
-                                                                }
-                                                                
-                                                            }
-                                                        }
+                                                 
                                                         Text("\(post.username)")
                                                             .fontWeight(.bold)
                                                         Text("\(post.date)")
@@ -430,6 +420,7 @@ struct SocialView: View {
                                 
                             }
                             
+                         
                             
                         }
                         .onAppear {

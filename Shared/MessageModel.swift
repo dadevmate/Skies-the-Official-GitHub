@@ -42,7 +42,7 @@ class MessageModel: ObservableObject {
     func order(comm: CommData) {
         let db = Firestore.firestore()
         
-        db.collection("communities").document(comm.id).collection("messages").order(by: "message")
+        db.collection("communities").document(comm.id).collection("messages").order(by: "timestamp")
 
     }
 

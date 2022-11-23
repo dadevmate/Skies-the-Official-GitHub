@@ -29,6 +29,10 @@
 		5830712B292B068600640CFE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58307129292B068600640CFE /* Network.swift */; };
 		5830712D292B1ED000640CFE /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5830712C292B1ECF00640CFE /* NoConnectionView.swift */; };
 		5830712E292B1ED000640CFE /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5830712C292B1ECF00640CFE /* NoConnectionView.swift */; };
+		5830BC86292E4DE10049F8E2 /* DeletedUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5830BC85292E4DE10049F8E2 /* DeletedUserData.swift */; };
+		5830BC87292E4DE10049F8E2 /* DeletedUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5830BC85292E4DE10049F8E2 /* DeletedUserData.swift */; };
+		5830BC89292E4E200049F8E2 /* DeletedUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5830BC88292E4E200049F8E2 /* DeletedUserModel.swift */; };
+		5830BC8A292E4E200049F8E2 /* DeletedUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5830BC88292E4E200049F8E2 /* DeletedUserModel.swift */; };
 		5832C8E32878144A00799DE2 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832C8E22878144A00799DE2 /* SocialView.swift */; };
 		5832C8E42878144A00799DE2 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832C8E22878144A00799DE2 /* SocialView.swift */; };
 		5832C8E62878145700799DE2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832C8E52878145700799DE2 /* SettingsView.swift */; };
@@ -112,6 +116,8 @@
 		58248F882879FF8F0073B165 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		58307129292B068600640CFE /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		5830712C292B1ECF00640CFE /* NoConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionView.swift; sourceTree = "<group>"; };
+		5830BC85292E4DE10049F8E2 /* DeletedUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedUserData.swift; sourceTree = "<group>"; };
+		5830BC88292E4E200049F8E2 /* DeletedUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletedUserModel.swift; sourceTree = "<group>"; };
 		5832C8E22878144A00799DE2 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		5832C8E52878145700799DE2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5832C8E82878146C00799DE2 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -203,6 +209,8 @@
 				5861CF7628F824C4004CDCFB /* CommunityModel.swift */,
 				58661CE628F188C100A8804A /* AboutData.swift */,
 				58661CE928F188CA00A8804A /* AboutModel.swift */,
+				5830BC85292E4DE10049F8E2 /* DeletedUserData.swift */,
+				5830BC88292E4E200049F8E2 /* DeletedUserModel.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -439,9 +447,11 @@
 			files = (
 				5861CF7728F824C4004CDCFB /* CommunityModel.swift in Sources */,
 				58A07DE52870970D007AC025 /* HomeView.swift in Sources */,
+				5830BC86292E4DE10049F8E2 /* DeletedUserData.swift in Sources */,
 				584ED4D5292CF6230031BA83 /* CommentsView.swift in Sources */,
 				58661CEA28F188CA00A8804A /* AboutModel.swift in Sources */,
 				5832C8E62878145700799DE2 /* SettingsView.swift in Sources */,
+				5830BC89292E4E200049F8E2 /* DeletedUserModel.swift in Sources */,
 				5811F155286FF63100194347 /* ContentView.swift in Sources */,
 				586FF3222871A073004C8B3C /* NotOldView.swift in Sources */,
 				5890B4D828844C4B00681B08 /* CommentData.swift in Sources */,
@@ -475,9 +485,11 @@
 			files = (
 				5861CF7828F824C4004CDCFB /* CommunityModel.swift in Sources */,
 				58A07DE62870970D007AC025 /* HomeView.swift in Sources */,
+				5830BC87292E4DE10049F8E2 /* DeletedUserData.swift in Sources */,
 				584ED4D6292CF6230031BA83 /* CommentsView.swift in Sources */,
 				58661CEB28F188CA00A8804A /* AboutModel.swift in Sources */,
 				5832C8E72878145700799DE2 /* SettingsView.swift in Sources */,
+				5830BC8A292E4E200049F8E2 /* DeletedUserModel.swift in Sources */,
 				5811F156286FF63100194347 /* ContentView.swift in Sources */,
 				586FF3232871A073004C8B3C /* NotOldView.swift in Sources */,
 				5890B4D928844C4B00681B08 /* CommentData.swift in Sources */,
