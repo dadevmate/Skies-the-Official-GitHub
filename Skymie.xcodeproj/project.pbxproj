@@ -1,0 +1,919 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		580313FB287916DF007A39D6 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580313FA287916DF007A39D6 /* UsersView.swift */; };
+		580313FC287916DF007A39D6 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580313FA287916DF007A39D6 /* UsersView.swift */; };
+		5811F144286FF63100194347 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5811F143286FF63100194347 /* Tests_iOS.swift */; };
+		5811F146286FF63100194347 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5811F145286FF63100194347 /* Tests_iOSLaunchTests.swift */; };
+		5811F150286FF63100194347 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5811F14F286FF63100194347 /* Tests_macOS.swift */; };
+		5811F152286FF63100194347 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5811F151286FF63100194347 /* Tests_macOSLaunchTests.swift */; };
+		5811F153286FF63100194347 /* SkymieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5811F12B286FF63100194347 /* SkymieApp.swift */; };
+		5811F154286FF63100194347 /* SkymieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5811F12B286FF63100194347 /* SkymieApp.swift */; };
+		5811F155286FF63100194347 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5811F12C286FF63100194347 /* ContentView.swift */; };
+		5811F156286FF63100194347 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5811F12C286FF63100194347 /* ContentView.swift */; };
+		5811F157286FF63100194347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5811F12D286FF63100194347 /* Assets.xcassets */; };
+		5811F158286FF63100194347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5811F12D286FF63100194347 /* Assets.xcassets */; };
+		58248F832879F9A80073B165 /* PostsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248F822879F9A80073B165 /* PostsData.swift */; };
+		58248F842879F9A80073B165 /* PostsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248F822879F9A80073B165 /* PostsData.swift */; };
+		58248F862879F9FC0073B165 /* PostsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248F852879F9FC0073B165 /* PostsModel.swift */; };
+		58248F872879F9FC0073B165 /* PostsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248F852879F9FC0073B165 /* PostsModel.swift */; };
+		58248F892879FF8F0073B165 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248F882879FF8F0073B165 /* PostsView.swift */; };
+		58248F8A2879FF8F0073B165 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248F882879FF8F0073B165 /* PostsView.swift */; };
+		5830712A292B068600640CFE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58307129292B068600640CFE /* Network.swift */; };
+		5830712B292B068600640CFE /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58307129292B068600640CFE /* Network.swift */; };
+		5830712D292B1ED000640CFE /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5830712C292B1ECF00640CFE /* NoConnectionView.swift */; };
+		5830712E292B1ED000640CFE /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5830712C292B1ECF00640CFE /* NoConnectionView.swift */; };
+		5832C8E32878144A00799DE2 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832C8E22878144A00799DE2 /* SocialView.swift */; };
+		5832C8E42878144A00799DE2 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832C8E22878144A00799DE2 /* SocialView.swift */; };
+		5832C8E62878145700799DE2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832C8E52878145700799DE2 /* SettingsView.swift */; };
+		5832C8E72878145700799DE2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832C8E52878145700799DE2 /* SettingsView.swift */; };
+		5832C8E92878146C00799DE2 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832C8E82878146C00799DE2 /* FavoritesView.swift */; };
+		5832C8EA2878146C00799DE2 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832C8E82878146C00799DE2 /* FavoritesView.swift */; };
+		58460F012881BA0A000EF2CF /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58460F002881BA0A000EF2CF /* NavBar.swift */; };
+		58460F022881BA0A000EF2CF /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58460F002881BA0A000EF2CF /* NavBar.swift */; };
+		584ED4D5292CF6230031BA83 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584ED4D4292CF6230031BA83 /* CommentsView.swift */; };
+		584ED4D6292CF6230031BA83 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584ED4D4292CF6230031BA83 /* CommentsView.swift */; };
+		584ED4D8292D17340031BA83 /* CommSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584ED4D7292D17340031BA83 /* CommSearchView.swift */; };
+		584ED4D9292D17340031BA83 /* CommSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584ED4D7292D17340031BA83 /* CommSearchView.swift */; };
+		584ED4DB292D1AE60031BA83 /* MessageViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584ED4DA292D1AE60031BA83 /* MessageViewTwo.swift */; };
+		584ED4DC292D1AE60031BA83 /* MessageViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584ED4DA292D1AE60031BA83 /* MessageViewTwo.swift */; };
+		5861CF7428F823EE004CDCFB /* CommunityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861CF7328F823EE004CDCFB /* CommunityData.swift */; };
+		5861CF7528F823EE004CDCFB /* CommunityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861CF7328F823EE004CDCFB /* CommunityData.swift */; };
+		5861CF7728F824C4004CDCFB /* CommunityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861CF7628F824C4004CDCFB /* CommunityModel.swift */; };
+		5861CF7828F824C4004CDCFB /* CommunityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5861CF7628F824C4004CDCFB /* CommunityModel.swift */; };
+		58661CE728F188C100A8804A /* AboutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58661CE628F188C100A8804A /* AboutData.swift */; };
+		58661CE828F188C100A8804A /* AboutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58661CE628F188C100A8804A /* AboutData.swift */; };
+		58661CEA28F188CA00A8804A /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58661CE928F188CA00A8804A /* AboutModel.swift */; };
+		58661CEB28F188CA00A8804A /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58661CE928F188CA00A8804A /* AboutModel.swift */; };
+		58661CED28F1954900A8804A /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58661CEC28F1954900A8804A /* AboutView.swift */; };
+		58661CEE28F1954900A8804A /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58661CEC28F1954900A8804A /* AboutView.swift */; };
+		586FF3222871A073004C8B3C /* NotOldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FF3212871A073004C8B3C /* NotOldView.swift */; };
+		586FF3232871A073004C8B3C /* NotOldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FF3212871A073004C8B3C /* NotOldView.swift */; };
+		586FF3252871E413004C8B3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 586FF3242871E413004C8B3C /* GoogleService-Info.plist */; };
+		586FF3262871E413004C8B3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 586FF3242871E413004C8B3C /* GoogleService-Info.plist */; };
+		586FF3292871E562004C8B3C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 586FF3282871E562004C8B3C /* FirebaseFirestore */; };
+		586FF32B2871E6D6004C8B3C /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FF32A2871E6D6004C8B3C /* UserData.swift */; };
+		586FF32C2871E6D6004C8B3C /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FF32A2871E6D6004C8B3C /* UserData.swift */; };
+		586FF32E2871E728004C8B3C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FF32D2871E728004C8B3C /* UserModel.swift */; };
+		586FF32F2871E728004C8B3C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FF32D2871E728004C8B3C /* UserModel.swift */; };
+		58725F86292A0AAD00FCB28D /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58725F85292A0AAD00FCB28D /* MessageView.swift */; };
+		58725F87292A0AAD00FCB28D /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58725F85292A0AAD00FCB28D /* MessageView.swift */; };
+		5890B4D828844C4B00681B08 /* CommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5890B4D728844C4B00681B08 /* CommentData.swift */; };
+		5890B4D928844C4B00681B08 /* CommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5890B4D728844C4B00681B08 /* CommentData.swift */; };
+		5890B4DB28844D3700681B08 /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5890B4DA28844D3700681B08 /* CommentsModel.swift */; };
+		5890B4DC28844D3700681B08 /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5890B4DA28844D3700681B08 /* CommentsModel.swift */; };
+		58A07DE52870970D007AC025 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A07DE42870970D007AC025 /* HomeView.swift */; };
+		58A07DE62870970D007AC025 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A07DE42870970D007AC025 /* HomeView.swift */; };
+		58C320D42906CBF500597235 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C320D32906CBF500597235 /* MessageData.swift */; };
+		58C320D52906CBF500597235 /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C320D32906CBF500597235 /* MessageData.swift */; };
+		58C320D72906CC6C00597235 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C320D62906CC6C00597235 /* MessageModel.swift */; };
+		58C320D82906CC6C00597235 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C320D62906CC6C00597235 /* MessageModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5811F140286FF63100194347 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5811F126286FF63000194347 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5811F131286FF63100194347;
+			remoteInfo = "Skymie (iOS)";
+		};
+		5811F14C286FF63100194347 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5811F126286FF63000194347 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5811F137286FF63100194347;
+			remoteInfo = "Skymie (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		580313FA287916DF007A39D6 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		5811F12B286FF63100194347 /* SkymieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkymieApp.swift; sourceTree = "<group>"; };
+		5811F12C286FF63100194347 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5811F12D286FF63100194347 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5811F132286FF63100194347 /* Skymie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skymie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5811F138286FF63100194347 /* Skymie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skymie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5811F13A286FF63100194347 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		5811F13F286FF63100194347 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5811F143286FF63100194347 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
+		5811F145286FF63100194347 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
+		5811F14B286FF63100194347 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5811F14F286FF63100194347 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		5811F151286FF63100194347 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		58248F822879F9A80073B165 /* PostsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsData.swift; sourceTree = "<group>"; };
+		58248F852879F9FC0073B165 /* PostsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModel.swift; sourceTree = "<group>"; };
+		58248F882879FF8F0073B165 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
+		58307129292B068600640CFE /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		5830712C292B1ECF00640CFE /* NoConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionView.swift; sourceTree = "<group>"; };
+		5832C8E22878144A00799DE2 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
+		5832C8E52878145700799DE2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5832C8E82878146C00799DE2 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		58460F002881BA0A000EF2CF /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
+		584ED4D4292CF6230031BA83 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		584ED4D7292D17340031BA83 /* CommSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommSearchView.swift; sourceTree = "<group>"; };
+		584ED4DA292D1AE60031BA83 /* MessageViewTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewTwo.swift; sourceTree = "<group>"; };
+		5861CF7328F823EE004CDCFB /* CommunityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityData.swift; sourceTree = "<group>"; };
+		5861CF7628F824C4004CDCFB /* CommunityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityModel.swift; sourceTree = "<group>"; };
+		58661CE628F188C100A8804A /* AboutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutData.swift; sourceTree = "<group>"; };
+		58661CE928F188CA00A8804A /* AboutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
+		58661CEC28F1954900A8804A /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		586FF3212871A073004C8B3C /* NotOldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotOldView.swift; sourceTree = "<group>"; };
+		586FF3242871E413004C8B3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		586FF32A2871E6D6004C8B3C /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		586FF32D2871E728004C8B3C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		58725F85292A0AAD00FCB28D /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		5890B4D728844C4B00681B08 /* CommentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentData.swift; sourceTree = "<group>"; };
+		5890B4DA28844D3700681B08 /* CommentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsModel.swift; sourceTree = "<group>"; };
+		58A07DE42870970D007AC025 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		58C320D32906CBF500597235 /* MessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageData.swift; sourceTree = "<group>"; };
+		58C320D62906CC6C00597235 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5811F12F286FF63100194347 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				586FF3292871E562004C8B3C /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5811F135286FF63100194347 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5811F13C286FF63100194347 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5811F148286FF63100194347 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5811F125286FF63000194347 = {
+			isa = PBXGroup;
+			children = (
+				587C0B7428FA689F00F26153 /* APIs */,
+				5832C8EB2878147300799DE2 /* Pages */,
+				5811F12A286FF63100194347 /* Shared */,
+				5811F139286FF63100194347 /* macOS */,
+				5811F142286FF63100194347 /* Tests iOS */,
+				5811F14E286FF63100194347 /* Tests macOS */,
+				5811F133286FF63100194347 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5811F12A286FF63100194347 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				58307129292B068600640CFE /* Network.swift */,
+				5811F12B286FF63100194347 /* SkymieApp.swift */,
+				5811F12C286FF63100194347 /* ContentView.swift */,
+				586FF32D2871E728004C8B3C /* UserModel.swift */,
+				586FF3212871A073004C8B3C /* NotOldView.swift */,
+				586FF32A2871E6D6004C8B3C /* UserData.swift */,
+				586FF3242871E413004C8B3C /* GoogleService-Info.plist */,
+				5811F12D286FF63100194347 /* Assets.xcassets */,
+				58248F822879F9A80073B165 /* PostsData.swift */,
+				58248F852879F9FC0073B165 /* PostsModel.swift */,
+				5890B4D728844C4B00681B08 /* CommentData.swift */,
+				58C320D32906CBF500597235 /* MessageData.swift */,
+				58C320D62906CC6C00597235 /* MessageModel.swift */,
+				5890B4DA28844D3700681B08 /* CommentsModel.swift */,
+				5861CF7328F823EE004CDCFB /* CommunityData.swift */,
+				5861CF7628F824C4004CDCFB /* CommunityModel.swift */,
+				58661CE628F188C100A8804A /* AboutData.swift */,
+				58661CE928F188CA00A8804A /* AboutModel.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		5811F133286FF63100194347 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5811F132286FF63100194347 /* Skymie.app */,
+				5811F138286FF63100194347 /* Skymie.app */,
+				5811F13F286FF63100194347 /* Tests iOS.xctest */,
+				5811F14B286FF63100194347 /* Tests macOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5811F139286FF63100194347 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				5811F13A286FF63100194347 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		5811F142286FF63100194347 /* Tests iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5811F143286FF63100194347 /* Tests_iOS.swift */,
+				5811F145286FF63100194347 /* Tests_iOSLaunchTests.swift */,
+			);
+			path = "Tests iOS";
+			sourceTree = "<group>";
+		};
+		5811F14E286FF63100194347 /* Tests macOS */ = {
+			isa = PBXGroup;
+			children = (
+				5811F14F286FF63100194347 /* Tests_macOS.swift */,
+				5811F151286FF63100194347 /* Tests_macOSLaunchTests.swift */,
+			);
+			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		5832C8EB2878147300799DE2 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				5832C8E22878144A00799DE2 /* SocialView.swift */,
+				58661CEC28F1954900A8804A /* AboutView.swift */,
+				58248F882879FF8F0073B165 /* PostsView.swift */,
+				584ED4D4292CF6230031BA83 /* CommentsView.swift */,
+				580313FA287916DF007A39D6 /* UsersView.swift */,
+				5832C8E82878146C00799DE2 /* FavoritesView.swift */,
+				58A07DE42870970D007AC025 /* HomeView.swift */,
+				584ED4D7292D17340031BA83 /* CommSearchView.swift */,
+				584ED4DA292D1AE60031BA83 /* MessageViewTwo.swift */,
+				5830712C292B1ECF00640CFE /* NoConnectionView.swift */,
+				58725F85292A0AAD00FCB28D /* MessageView.swift */,
+				5832C8E52878145700799DE2 /* SettingsView.swift */,
+				58460F002881BA0A000EF2CF /* NavBar.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		587C0B7428FA689F00F26153 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5811F131286FF63100194347 /* Skymie (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5811F15B286FF63100194347 /* Build configuration list for PBXNativeTarget "Skymie (iOS)" */;
+			buildPhases = (
+				5811F12E286FF63100194347 /* Sources */,
+				5811F12F286FF63100194347 /* Frameworks */,
+				5811F130286FF63100194347 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Skymie (iOS)";
+			packageProductDependencies = (
+				586FF3282871E562004C8B3C /* FirebaseFirestore */,
+			);
+			productName = "Skymie (iOS)";
+			productReference = 5811F132286FF63100194347 /* Skymie.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5811F137286FF63100194347 /* Skymie (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5811F15E286FF63100194347 /* Build configuration list for PBXNativeTarget "Skymie (macOS)" */;
+			buildPhases = (
+				5811F134286FF63100194347 /* Sources */,
+				5811F135286FF63100194347 /* Frameworks */,
+				5811F136286FF63100194347 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Skymie (macOS)";
+			productName = "Skymie (macOS)";
+			productReference = 5811F138286FF63100194347 /* Skymie.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5811F13E286FF63100194347 /* Tests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5811F161286FF63100194347 /* Build configuration list for PBXNativeTarget "Tests iOS" */;
+			buildPhases = (
+				5811F13B286FF63100194347 /* Sources */,
+				5811F13C286FF63100194347 /* Frameworks */,
+				5811F13D286FF63100194347 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5811F141286FF63100194347 /* PBXTargetDependency */,
+			);
+			name = "Tests iOS";
+			productName = "Tests iOS";
+			productReference = 5811F13F286FF63100194347 /* Tests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		5811F14A286FF63100194347 /* Tests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5811F164286FF63100194347 /* Build configuration list for PBXNativeTarget "Tests macOS" */;
+			buildPhases = (
+				5811F147286FF63100194347 /* Sources */,
+				5811F148286FF63100194347 /* Frameworks */,
+				5811F149286FF63100194347 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5811F14D286FF63100194347 /* PBXTargetDependency */,
+			);
+			name = "Tests macOS";
+			productName = "Tests macOS";
+			productReference = 5811F14B286FF63100194347 /* Tests macOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5811F126286FF63000194347 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					5811F131286FF63100194347 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					5811F137286FF63100194347 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					5811F13E286FF63100194347 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 5811F131286FF63100194347;
+					};
+					5811F14A286FF63100194347 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 5811F137286FF63100194347;
+					};
+				};
+			};
+			buildConfigurationList = 5811F129286FF63000194347 /* Build configuration list for PBXProject "Skymie" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5811F125286FF63000194347;
+			packageReferences = (
+				586FF3272871E562004C8B3C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 5811F133286FF63100194347 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5811F131286FF63100194347 /* Skymie (iOS) */,
+				5811F137286FF63100194347 /* Skymie (macOS) */,
+				5811F13E286FF63100194347 /* Tests iOS */,
+				5811F14A286FF63100194347 /* Tests macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5811F130286FF63100194347 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				586FF3252871E413004C8B3C /* GoogleService-Info.plist in Resources */,
+				5811F157286FF63100194347 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5811F136286FF63100194347 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				586FF3262871E413004C8B3C /* GoogleService-Info.plist in Resources */,
+				5811F158286FF63100194347 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5811F13D286FF63100194347 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5811F149286FF63100194347 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5811F12E286FF63100194347 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5861CF7728F824C4004CDCFB /* CommunityModel.swift in Sources */,
+				58A07DE52870970D007AC025 /* HomeView.swift in Sources */,
+				584ED4D5292CF6230031BA83 /* CommentsView.swift in Sources */,
+				58661CEA28F188CA00A8804A /* AboutModel.swift in Sources */,
+				5832C8E62878145700799DE2 /* SettingsView.swift in Sources */,
+				5811F155286FF63100194347 /* ContentView.swift in Sources */,
+				586FF3222871A073004C8B3C /* NotOldView.swift in Sources */,
+				5890B4D828844C4B00681B08 /* CommentData.swift in Sources */,
+				5890B4DB28844D3700681B08 /* CommentsModel.swift in Sources */,
+				584ED4DB292D1AE60031BA83 /* MessageViewTwo.swift in Sources */,
+				586FF32B2871E6D6004C8B3C /* UserData.swift in Sources */,
+				58248F862879F9FC0073B165 /* PostsModel.swift in Sources */,
+				5830712A292B068600640CFE /* Network.swift in Sources */,
+				580313FB287916DF007A39D6 /* UsersView.swift in Sources */,
+				58C320D42906CBF500597235 /* MessageData.swift in Sources */,
+				58725F86292A0AAD00FCB28D /* MessageView.swift in Sources */,
+				58248F832879F9A80073B165 /* PostsData.swift in Sources */,
+				584ED4D8292D17340031BA83 /* CommSearchView.swift in Sources */,
+				58661CE728F188C100A8804A /* AboutData.swift in Sources */,
+				586FF32E2871E728004C8B3C /* UserModel.swift in Sources */,
+				5861CF7428F823EE004CDCFB /* CommunityData.swift in Sources */,
+				58248F892879FF8F0073B165 /* PostsView.swift in Sources */,
+				5811F153286FF63100194347 /* SkymieApp.swift in Sources */,
+				58C320D72906CC6C00597235 /* MessageModel.swift in Sources */,
+				58460F012881BA0A000EF2CF /* NavBar.swift in Sources */,
+				58661CED28F1954900A8804A /* AboutView.swift in Sources */,
+				5830712D292B1ED000640CFE /* NoConnectionView.swift in Sources */,
+				5832C8E32878144A00799DE2 /* SocialView.swift in Sources */,
+				5832C8E92878146C00799DE2 /* FavoritesView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5811F134286FF63100194347 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5861CF7828F824C4004CDCFB /* CommunityModel.swift in Sources */,
+				58A07DE62870970D007AC025 /* HomeView.swift in Sources */,
+				584ED4D6292CF6230031BA83 /* CommentsView.swift in Sources */,
+				58661CEB28F188CA00A8804A /* AboutModel.swift in Sources */,
+				5832C8E72878145700799DE2 /* SettingsView.swift in Sources */,
+				5811F156286FF63100194347 /* ContentView.swift in Sources */,
+				586FF3232871A073004C8B3C /* NotOldView.swift in Sources */,
+				5890B4D928844C4B00681B08 /* CommentData.swift in Sources */,
+				5890B4DC28844D3700681B08 /* CommentsModel.swift in Sources */,
+				584ED4DC292D1AE60031BA83 /* MessageViewTwo.swift in Sources */,
+				586FF32C2871E6D6004C8B3C /* UserData.swift in Sources */,
+				58248F872879F9FC0073B165 /* PostsModel.swift in Sources */,
+				5830712B292B068600640CFE /* Network.swift in Sources */,
+				580313FC287916DF007A39D6 /* UsersView.swift in Sources */,
+				58C320D52906CBF500597235 /* MessageData.swift in Sources */,
+				58725F87292A0AAD00FCB28D /* MessageView.swift in Sources */,
+				58248F842879F9A80073B165 /* PostsData.swift in Sources */,
+				584ED4D9292D17340031BA83 /* CommSearchView.swift in Sources */,
+				58661CE828F188C100A8804A /* AboutData.swift in Sources */,
+				586FF32F2871E728004C8B3C /* UserModel.swift in Sources */,
+				5861CF7528F823EE004CDCFB /* CommunityData.swift in Sources */,
+				58248F8A2879FF8F0073B165 /* PostsView.swift in Sources */,
+				5811F154286FF63100194347 /* SkymieApp.swift in Sources */,
+				58C320D82906CC6C00597235 /* MessageModel.swift in Sources */,
+				58460F022881BA0A000EF2CF /* NavBar.swift in Sources */,
+				58661CEE28F1954900A8804A /* AboutView.swift in Sources */,
+				5830712E292B1ED000640CFE /* NoConnectionView.swift in Sources */,
+				5832C8E42878144A00799DE2 /* SocialView.swift in Sources */,
+				5832C8EA2878146C00799DE2 /* FavoritesView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5811F13B286FF63100194347 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5811F146286FF63100194347 /* Tests_iOSLaunchTests.swift in Sources */,
+				5811F144286FF63100194347 /* Tests_iOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5811F147286FF63100194347 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5811F152286FF63100194347 /* Tests_macOSLaunchTests.swift in Sources */,
+				5811F150286FF63100194347 /* Tests_macOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5811F141286FF63100194347 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5811F131286FF63100194347 /* Skymie (iOS) */;
+			targetProxy = 5811F140286FF63100194347 /* PBXContainerItemProxy */;
+		};
+		5811F14D286FF63100194347 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5811F137286FF63100194347 /* Skymie (macOS) */;
+			targetProxy = 5811F14C286FF63100194347 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5811F159286FF63100194347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5811F15A286FF63100194347 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		5811F15C286FF63100194347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5QA5Q9HPB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Skies;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samplie.Skymie;
+				PRODUCT_NAME = Skymie;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5811F15D286FF63100194347 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5QA5Q9HPB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Skies;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samplie.Skymie;
+				PRODUCT_NAME = Skymie;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5811F15F286FF63100194347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5QA5Q9HPB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samplie.Skymie;
+				PRODUCT_NAME = Skymie;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5811F160286FF63100194347 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5QA5Q9HPB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samplie.Skymie;
+				PRODUCT_NAME = Skymie;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5811F162286FF63100194347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5QA5Q9HPB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.samplie.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Skymie (iOS)";
+			};
+			name = Debug;
+		};
+		5811F163286FF63100194347 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5QA5Q9HPB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.samplie.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Skymie (iOS)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5811F165286FF63100194347 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5QA5Q9HPB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.samplie.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Skymie (macOS)";
+			};
+			name = Debug;
+		};
+		5811F166286FF63100194347 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5QA5Q9HPB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.samplie.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Skymie (macOS)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5811F129286FF63000194347 /* Build configuration list for PBXProject "Skymie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5811F159286FF63100194347 /* Debug */,
+				5811F15A286FF63100194347 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5811F15B286FF63100194347 /* Build configuration list for PBXNativeTarget "Skymie (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5811F15C286FF63100194347 /* Debug */,
+				5811F15D286FF63100194347 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5811F15E286FF63100194347 /* Build configuration list for PBXNativeTarget "Skymie (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5811F15F286FF63100194347 /* Debug */,
+				5811F160286FF63100194347 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5811F161286FF63100194347 /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5811F162286FF63100194347 /* Debug */,
+				5811F163286FF63100194347 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5811F164286FF63100194347 /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5811F165286FF63100194347 /* Debug */,
+				5811F166286FF63100194347 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		586FF3272871E562004C8B3C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		586FF3282871E562004C8B3C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 586FF3272871E562004C8B3C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5811F126286FF63000194347 /* Project object */;
+}
