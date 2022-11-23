@@ -516,14 +516,14 @@ struct HomeView: View {
                     .onReceive(timer) { time in
                         
                         let titles = ["It's Skies time!", "Let's talk!", "Your friends and communities...", "The sky's the limit!", "You could discover something new on Skies"]
-                        let bodies = ["Why not hop over to Skies and connect with communities you care about? It'll be fun!", "Skies is a great place to talk, chill and just have fun. Hop over and let's hangout", "The party's not fun without you! Hop over to Skies and let's talk.", "Hop over to Skies and hangout. Everyone's waiting for you!", "Skies can be a great place to learn new things, hangout and discover new people. Come on, what're you waiting for!"]
+                        let bodies = ["Why not hop over to Skies and connect with communities you care about? It'll be fun!", "Skies is a great place to talk, chill and just have fun. Hop over and let's hangout", "The party's not fun without you! Hop over to Skies and talk.", "Hop over to Skies and hangout. Everyone's waiting for you!", "Skies can be a great place to learn new things, hangout and discover new people. Come on, what're you waiting for!"]
                         let content = UNMutableNotificationContent()
                         content.title = titles.randomElement() ?? ""
                         content.body = bodies.randomElement() ?? ""
                         content.sound = UNNotificationSound.default
 
                         // show this notification five seconds from now
-                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
 
                         // choose a random identifier
                         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
