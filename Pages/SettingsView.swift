@@ -52,7 +52,7 @@ struct SettingsView: View {
                                 
                                 HStack {
                                     Spacer()
-                                    Button("Logout") {
+                                    Button("Log out") {
                                         sureLogOut = true
                                     }
                                     .alert("Are you sure you wanna log out?", isPresented: $sureLogOut) {

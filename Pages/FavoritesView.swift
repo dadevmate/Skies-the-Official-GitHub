@@ -31,6 +31,9 @@ struct FavoritesView: View {
                 NavigationView {
                     
                     VStack {
+                        Text("Favourites don't save after you log out or delete the app")
+                            .foregroundColor(.gray)
+                            .font(.caption)
                         List(favComms, id: \.self) { fav in
                             
                             ForEach(commModel.list) { community in
