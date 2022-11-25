@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import RevenueCat
 
 var num = 0
 var thisComm = CommData(id: "", name: "", pic: "", about: "", restricted: "", fiveWords: "", reported: false)
@@ -31,6 +31,7 @@ struct HomeView: View {
     @AppStorage("savedMediaLink") var savedMediaLink = ""
     @AppStorage("favourites") var favourites = ""
     @AppStorage("veryFirstTime") var veryFirstTime = true
+
     @State var exactTime = false
     @State var createCommunity = false
     @State var commName = ""
@@ -67,6 +68,8 @@ struct HomeView: View {
     @State var timeRemaining = 10800
     @State var commu = [CommData(id: "", name: "", pic: "", about: "", restricted: "", fiveWords: "Scroll up and refresh to load more communities", reported: false)]
     @State var doneIt = false
+    @State var yourNotOld = false
+    let oneWeekInSeconds = 604_800.0
     var body: some View {
 
           
@@ -232,32 +235,44 @@ struct HomeView: View {
                                                                 Button("Submit") {
                                                                     
                                                                     // code from here again
-                                                                    
-                                                                    
-                                                                    if commName != "" && about != "" && commPic != "" && firstWord != "" && secondWord != "" && thirdWord != "" && fourthWord != "" && fifthWord != "" {
-                                                                        sureCreate = true
+                                                                    if person == "teenager" && age == "18 and above" {
+                                                                        yourNotOld = true
                                                                     } else {
-                                                                        unsuccessful = true
-                                                                    }
+                                                                        
+                                                                        
                                                                     
+                                                                        
+                                                                        if commName != "" && about != "" && commPic != "" && firstWord != "" && secondWord != "" && thirdWord != "" && fourthWord != "" && fifthWord != "" {
+                                                                            sureCreate = true
+                                                                        } else {
+                                                                            unsuccessful = true
+                                                                        }
+                                                                    }
                                                                 }
                                                                 .alert("Are you sure you wanna create this community?", isPresented: $sureCreate) {
                                                                     Button("Yes") {
-                                                                        combined = "\(firstWord), \(secondWord), \(thirdWord), \(fourthWord), \(fifthWord)"
-                                                                        commModel.addData(name: commName, pic: commPic, about: about, restricted: age, fiveWords: combined, reported: false)
-                                                                        pfp = commPic
-                                                                        combined = ""
-                                                                        commName = ""
-                                                                        commPic = ""
-                                                                        about = ""
-                                                                        age = "Everyone"
-                                                                        firstWord = ""
-                                                                        secondWord = ""
-                                                                        thirdWord = ""
-                                                                        fourthWord = ""
-                                                                        fifthWord = ""
                                                                         
+                                                                     
+                                                                            combined = "\(firstWord), \(secondWord), \(thirdWord), \(fourthWord), \(fifthWord)"
+                                                                            commModel.addData(name: commName, pic: commPic, about: about, restricted: age, fiveWords: combined, reported: false)
+                                                                            pfp = commPic
+                                                                            combined = ""
+                                                                            commName = ""
+                                                                            commPic = ""
+                                                                            about = ""
+                                                                            age = "Everyone"
+                                                                            firstWord = ""
+                                                                            secondWord = ""
+                                                                            thirdWord = ""
+                                                                            fourthWord = ""
+                                                                            fifthWord = ""
                                                                         createCommunity = false
+                                                                        }
+                                                                       
+                                                                    
+                                                                    
+                                                                    Button("No") {
+                                                                        
                                                                     }
                                                                 } message: {
                                                                     Text("You can't delete a community. Make sure a similar community doesn't exist. Only create a community if you think people will think the topic is interesting to discuss. Anyone can message in your community in Skies, there's no private community.")
@@ -266,6 +281,11 @@ struct HomeView: View {
                                                                     
                                                                 } message: {
                                                                     Text("Make sure you fill in all fields!")
+                                                                }
+                                                                .alert("Error!", isPresented: $yourNotOld) {
+                                                                    
+                                                                } message: {
+                                                                    Text("Your not old enough to create an 18+ community")
                                                                 }
                                                                 Spacer()
                                                             }
@@ -299,10 +319,10 @@ struct HomeView: View {
                                     
                                     Section {
                                     HStack {
-                                        TextField("Search for communities", text: $commeSearched)
+                                        TextField("  Search for communities", text: $commeSearched)
                                             .focused($focus)
                                             .frame(width: 300, height: 50)
-                                            .border(.black)
+                                            .border(Color.primary)
                                            
                                         
                                         Button {
@@ -509,12 +529,15 @@ struct HomeView: View {
                              
                             }
                             .navigationViewStyle(.stack)
-                    
+                      
                             
                         }
                     }
-                    .onReceive(timer) { time in
+                    
+           
+                    .onAppear {
                         
+                        commModel.getData()
                         let titles = ["It's Skies time!", "Let's talk!", "Your friends and communities...", "The sky's the limit!", "You could discover something new on Skies"]
                         let bodies = ["Why not hop over to Skies and connect with communities you care about? It'll be fun!", "Skies is a great place to talk, chill and just have fun. Hop over and let's hangout", "The party's not fun without you! Hop over to Skies and talk.", "Hop over to Skies and hangout. Everyone's waiting for you!", "Skies can be a great place to learn new things, hangout and discover new people. Come on, what're you waiting for!"]
                         let content = UNMutableNotificationContent()
@@ -523,19 +546,13 @@ struct HomeView: View {
                         content.sound = UNNotificationSound.default
 
                         // show this notification five seconds from now
-                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7200, repeats: true)
 
                         // choose a random identifier
                         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
                         // add our notification request
                         UNUserNotificationCenter.current().add(request)
-                        timeRemaining = 10800
-                    }
-                    .onAppear {
-                        
-                        commModel.getData()
-                        
                         if donie == false {
                             if commu.count < 2 {
                                 
@@ -549,6 +566,9 @@ struct HomeView: View {
                                 
                             }
                         }
+                        
+                    
+                        
                     }
                 } else {
                     MessageView()

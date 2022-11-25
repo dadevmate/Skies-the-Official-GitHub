@@ -7,6 +7,8 @@
 
 import SwiftUI
 import CryptoKit
+import Firebase
+
 
 struct ContentView: View {
     
@@ -187,7 +189,16 @@ struct ContentView: View {
                                                             
                                                             
                                                             model.addData(username: username, person: person, password: hash, bio: "", favourites: "", hobbies: "", mediaLink: "", pfp: "", verified: false)
-                                                            
+                                                            Auth.auth().createUser(withEmail: username, password: password) { result, err in
+                                                                
+                                                                if let err = err {
+                                                                    print("failed to create user", err)
+                                                                    return
+                                                                }
+                                                                
+                                                                print("SUCCESSFULLY CREATED USER")
+                                                                
+                                                            }
                                                             
                                                         }
                                                     } else {
@@ -369,7 +380,7 @@ struct ContentView: View {
     init() { // On this initialisation of this view, we get the data
         model.getData()
         
-        
+      
     }
 
       

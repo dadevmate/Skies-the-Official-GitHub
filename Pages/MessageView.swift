@@ -23,6 +23,8 @@ struct MessageView: View {
     @State var swearWords2 = [ "sex", "nude", "naked", "genitals", "vagina", "penis", "sperm", "sperms", "chink",  "porn", "pornography", "pornhub", "dick", "dicks"]
     @State var badWord = false
 @State var imageLink = ""
+   let yo = MessageModel().order(comm: thisComm)
+    @State var desc = false
     var body: some View {
        
     
@@ -45,14 +47,27 @@ struct MessageView: View {
                         
                         Spacer()
                         
+                   
+                        
+                        Button("Info") {
+                            desc = true
+                        }
+                        .alert("Description:", isPresented: $desc) {
+                            
+                        } message: {
+                            Text("\(thisComm.about)")
+                        }
+                        
+                        Spacer()
+                        
                         if focus == true {
                             Button("Done") {
                                 focus = false
                             }
+                            Spacer()
                         }
                         
-                        
-                        Spacer()
+                 
                         
                     }
                     
@@ -116,6 +131,11 @@ struct MessageView: View {
                         
                     }
                     .onAppear {
+                        
+           
+                        
+                       
+                        
                         network.checkConnection()
                      
                         
@@ -123,6 +143,7 @@ struct MessageView: View {
                     .refreshable {
                         network.checkConnection()
                         messageModel.getData(comm: thisComm)
+                        
                     }
                     .onReceive(network.$connected, perform: { connected in
                         
@@ -131,11 +152,11 @@ struct MessageView: View {
                     .onReceive(timer) { time in
                         messageModel.getData(comm: thisComm)
                        
-                    
+                       
                         timeRemaining = 0.2
                     }
                     
-                    TextField("Add an image link (optional)", text: $imageLink)
+                    TextField("  Add an image link (optional)", text: $imageLink)
                         .focused($focus)
                         .border(Color.gray)
                         .padding()
@@ -149,31 +170,31 @@ struct MessageView: View {
                                 .focused($focus)
                                 .frame(width: 300, height: 75)
                                 .cornerRadius(5)
-                                .border(Color.black)
+                                .border(Color.primary)
                         } else if messageText.count > 150 && messageText.count < 250 {
                             TextEditor(text: $messageText)
                                 .focused($focus)
                                 .frame(width: 300, height: 100)
                                 .cornerRadius(5)
-                                .border(Color.black)
+                                .border(Color.primary)
                         }  else if messageText.count > 250 && messageText.count < 350 {
                             TextEditor(text: $messageText)
                                 .focused($focus)
                                 .frame(width: 300, height: 125)
                                 .cornerRadius(5)
-                                .border(Color.black)
+                                .border(Color.primary)
                         } else if messageText.count > 350 && messageText.count < 450 {
                             TextEditor(text: $messageText)
                                 .focused($focus)
                                 .frame(width: 300, height: 150)
                                 .cornerRadius(5)
-                                .border(Color.black)
+                                .border(Color.primary)
                         } else if messageText.count > 450 {
                             TextEditor(text: $messageText)
                                 .focused($focus)
                                 .frame(width: 300, height: 175)
                                 .cornerRadius(5)
-                                .border(Color.black)
+                                .border(Color.primary)
                         }
                         Spacer()
                         Button {
@@ -285,7 +306,7 @@ struct MessageView: View {
     
     init() {
         messageModel.getData(comm: thisComm)
-        messageModel.order(comm: thisComm)
+        print(messageModel.order(comm: thisComm))
       
         
     }

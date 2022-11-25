@@ -507,14 +507,14 @@ struct SettingsView: View {
                             Section {
                                 Section {
                                     NavigationLink {
-                                        
+                                        TermsOfService()
                                     } label: {
                                         Text("Terms of Service")
                                     }
                                 }
                                 Section {
                                     NavigationLink {
-                                        
+                                        PrivacyPolicy()
                                     } label: {
                                         Text("Privacy Policy")
                                     }

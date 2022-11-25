@@ -88,6 +88,7 @@ struct CommSearchView: View {
                         
                         
                     }
+                    BannerAd(unitId: "ca-app-pub-6142532326654511/4548690533")
                 }
                 .navigationTitle("Communities")
             }

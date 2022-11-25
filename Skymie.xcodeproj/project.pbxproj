@@ -68,6 +68,11 @@
 		586FF32F2871E728004C8B3C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FF32D2871E728004C8B3C /* UserModel.swift */; };
 		58725F86292A0AAD00FCB28D /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58725F85292A0AAD00FCB28D /* MessageView.swift */; };
 		58725F87292A0AAD00FCB28D /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58725F85292A0AAD00FCB28D /* MessageView.swift */; };
+		5874B4A1292E62B900DFFAD8 /* SkiesPlusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874B4A0292E62B900DFFAD8 /* SkiesPlusView.swift */; };
+		5874B4A2292E62B900DFFAD8 /* SkiesPlusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874B4A0292E62B900DFFAD8 /* SkiesPlusView.swift */; };
+		5874B4A5292F1D4C00DFFAD8 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 5874B4A4292F1D4C00DFFAD8 /* RevenueCat */; };
+		5874B4A7292F2ACB00DFFAD8 /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874B4A6292F2ACB00DFFAD8 /* SubscriptionModel.swift */; };
+		5874B4A8292F2ACB00DFFAD8 /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874B4A6292F2ACB00DFFAD8 /* SubscriptionModel.swift */; };
 		5890B4D828844C4B00681B08 /* CommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5890B4D728844C4B00681B08 /* CommentData.swift */; };
 		5890B4D928844C4B00681B08 /* CommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5890B4D728844C4B00681B08 /* CommentData.swift */; };
 		5890B4DB28844D3700681B08 /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5890B4DA28844D3700681B08 /* CommentsModel.swift */; };
@@ -135,6 +140,8 @@
 		586FF32A2871E6D6004C8B3C /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		586FF32D2871E728004C8B3C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		58725F85292A0AAD00FCB28D /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		5874B4A0292E62B900DFFAD8 /* SkiesPlusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkiesPlusView.swift; sourceTree = "<group>"; };
+		5874B4A6292F2ACB00DFFAD8 /* SubscriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionModel.swift; sourceTree = "<group>"; };
 		5890B4D728844C4B00681B08 /* CommentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentData.swift; sourceTree = "<group>"; };
 		5890B4DA28844D3700681B08 /* CommentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsModel.swift; sourceTree = "<group>"; };
 		58A07DE42870970D007AC025 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -147,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5874B4A5292F1D4C00DFFAD8 /* RevenueCat in Frameworks */,
 				586FF3292871E562004C8B3C /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +219,7 @@
 				58661CE928F188CA00A8804A /* AboutModel.swift */,
 				5830BC85292E4DE10049F8E2 /* DeletedUserData.swift */,
 				5830BC88292E4E200049F8E2 /* DeletedUserModel.swift */,
+				5874B4A6292F2ACB00DFFAD8 /* SubscriptionModel.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -268,6 +277,7 @@
 				58725F85292A0AAD00FCB28D /* MessageView.swift */,
 				5832C8E52878145700799DE2 /* SettingsView.swift */,
 				58460F002881BA0A000EF2CF /* NavBar.swift */,
+				5874B4A0292E62B900DFFAD8 /* SkiesPlusView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -297,6 +307,7 @@
 			name = "Skymie (iOS)";
 			packageProductDependencies = (
 				586FF3282871E562004C8B3C /* FirebaseFirestore */,
+				5874B4A4292F1D4C00DFFAD8 /* RevenueCat */,
 			);
 			productName = "Skymie (iOS)";
 			productReference = 5811F132286FF63100194347 /* Skymie.app */;
@@ -392,6 +403,7 @@
 			mainGroup = 5811F125286FF63000194347;
 			packageReferences = (
 				586FF3272871E562004C8B3C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5874B4A3292F1D4C00DFFAD8 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 5811F133286FF63100194347 /* Products */;
 			projectDirPath = "";
@@ -452,11 +464,13 @@
 				58661CEA28F188CA00A8804A /* AboutModel.swift in Sources */,
 				5832C8E62878145700799DE2 /* SettingsView.swift in Sources */,
 				5830BC89292E4E200049F8E2 /* DeletedUserModel.swift in Sources */,
+				5874B4A7292F2ACB00DFFAD8 /* SubscriptionModel.swift in Sources */,
 				5811F155286FF63100194347 /* ContentView.swift in Sources */,
 				586FF3222871A073004C8B3C /* NotOldView.swift in Sources */,
 				5890B4D828844C4B00681B08 /* CommentData.swift in Sources */,
 				5890B4DB28844D3700681B08 /* CommentsModel.swift in Sources */,
 				584ED4DB292D1AE60031BA83 /* MessageViewTwo.swift in Sources */,
+				5874B4A1292E62B900DFFAD8 /* SkiesPlusView.swift in Sources */,
 				586FF32B2871E6D6004C8B3C /* UserData.swift in Sources */,
 				58248F862879F9FC0073B165 /* PostsModel.swift in Sources */,
 				5830712A292B068600640CFE /* Network.swift in Sources */,
@@ -490,11 +504,13 @@
 				58661CEB28F188CA00A8804A /* AboutModel.swift in Sources */,
 				5832C8E72878145700799DE2 /* SettingsView.swift in Sources */,
 				5830BC8A292E4E200049F8E2 /* DeletedUserModel.swift in Sources */,
+				5874B4A8292F2ACB00DFFAD8 /* SubscriptionModel.swift in Sources */,
 				5811F156286FF63100194347 /* ContentView.swift in Sources */,
 				586FF3232871A073004C8B3C /* NotOldView.swift in Sources */,
 				5890B4D928844C4B00681B08 /* CommentData.swift in Sources */,
 				5890B4DC28844D3700681B08 /* CommentsModel.swift in Sources */,
 				584ED4DC292D1AE60031BA83 /* MessageViewTwo.swift in Sources */,
+				5874B4A2292E62B900DFFAD8 /* SkiesPlusView.swift in Sources */,
 				586FF32C2871E6D6004C8B3C /* UserData.swift in Sources */,
 				58248F872879F9FC0073B165 /* PostsModel.swift in Sources */,
 				5830712B292B068600640CFE /* Network.swift in Sources */,
@@ -917,6 +933,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		5874B4A3292F1D4C00DFFAD8 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -924,6 +948,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 586FF3272871E562004C8B3C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		5874B4A4292F1D4C00DFFAD8 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5874B4A3292F1D4C00DFFAD8 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

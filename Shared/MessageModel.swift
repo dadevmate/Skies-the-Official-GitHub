@@ -39,11 +39,14 @@ class MessageModel: ObservableObject {
         
     }
     
-    func order(comm: CommData) {
+    func order(comm: CommData) -> Query {
         let db = Firestore.firestore()
+        // My top posts by number of stars
+        let myTopPostsQuery = db.collection("communities").document(comm.id).collection("messages").order(by: "timestamp")
         
-        db.collection("communities").document(comm.id).collection("messages").order(by: "timestamp")
-
+      
+     
+        return myTopPostsQuery
     }
 
     
@@ -71,7 +74,7 @@ class MessageModel: ObservableObject {
             }
             
         }
-        
+       
     }
     
     func getData(comm: CommData) {
@@ -102,6 +105,7 @@ class MessageModel: ObservableObject {
                         
                       // Create a Todo item for each document returned
                             return MessageData(id: doc.documentID, username: doc["username"] as? String ?? "", message: doc["message"] as? String ?? "", commId: comm.id, time: doc["time"] as? String ?? "", pfp: doc["pfp"] as? String ?? "", image: doc["image"] as? String ?? "", timestamp: doc["timestamp"] as? Int ?? 0, verified: doc["verified"] as? Bool ?? false)
+                         
                     }
                     }
                 }

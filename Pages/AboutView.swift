@@ -114,6 +114,9 @@ struct AboutView: View {
                                         }
                                     }
                                 }
+                                
+                                BannerAd(unitId: "ca-app-pub-6142532326654511/4548690533")
+                                    .frame(width: 300, height: 100)
                             }
                             
                         }
@@ -136,7 +139,7 @@ struct AboutView: View {
                     }
                 }
             }
-       
+            .navigationViewStyle(.stack)
     }
     
     init() {

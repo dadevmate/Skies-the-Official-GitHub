@@ -125,7 +125,7 @@ struct MessageViewTwo: View {
                         timeRemaining = 0.2
                     }
                     
-                    TextField("Add an image link", text: $imageLink)
+                    TextField("  Add an image link (optional)", text: $imageLink)
                         .focused($focus)
                         .border(Color.gray)
                         .padding()
@@ -139,31 +139,31 @@ struct MessageViewTwo: View {
                                 .focused($focus)
                                 .frame(width: 300, height: 75)
                                 .cornerRadius(5)
-                                .border(Color.black)
+                                .border(Color.primary)
                         } else if messageText.count > 150 && messageText.count < 250 {
                             TextEditor(text: $messageText)
                                 .focused($focus)
                                 .frame(width: 300, height: 100)
                                 .cornerRadius(5)
-                                .border(Color.black)
+                                .border(Color.primary)
                         }  else if messageText.count > 250 && messageText.count < 350 {
                             TextEditor(text: $messageText)
                                 .focused($focus)
                                 .frame(width: 300, height: 125)
                                 .cornerRadius(5)
-                                .border(Color.black)
+                                .border(Color.primary)
                         } else if messageText.count > 350 && messageText.count < 450 {
                             TextEditor(text: $messageText)
                                 .focused($focus)
                                 .frame(width: 300, height: 150)
                                 .cornerRadius(5)
-                                .border(Color.black)
+                                .border(Color.primary)
                         } else if messageText.count > 450 {
                             TextEditor(text: $messageText)
                                 .focused($focus)
                                 .frame(width: 300, height: 175)
                                 .cornerRadius(5)
-                                .border(Color.black)
+                                .border(Color.primary)
                         }
                         Spacer()
                         Button {

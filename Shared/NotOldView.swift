@@ -21,7 +21,7 @@ struct NotOldView: View {
             Image(systemName: "exclamationmark.triangle.fill")
                 .font(.system(size: 80))
             Spacer()
-        Text(" We want Skies to be a good place \n for everyone. Unfortunately, you're not \n old enough to use it \n \n We'll always be here. Come back when \n your at least 13 years old.")
+        Text(" We want Skies to be a good place \n for everyone. Unfortunately, you're not \n old enough to use it. \n \n We'll always be here. Come back when \n your at least 13 years old.")
         Spacer()
             Spacer()
   

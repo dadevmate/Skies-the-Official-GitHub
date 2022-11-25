@@ -200,7 +200,8 @@ struct PostsView: View {
                                 
                             }
                             
-                            
+                            BannerAd(unitId: "ca-app-pub-6142532326654511/4548690533")
+                                .frame(width: 300, height: 300)
                             
                         }
                         .toolbar {
@@ -227,6 +228,7 @@ struct PostsView: View {
                         })
                         .onReceive(timer) { time in
                             postsModel.getData()
+                          
                             timeRemaining = 3
                         }
                     }
