@@ -42,17 +42,9 @@ struct SkiesPlusView: View {
                         .foregroundColor(.white)
                     
                     
-                    if notAvailableYet == false {
+                  
                         
-                        Button {
-                            Purchases.shared.restorePurchases { (customerInfo, error) in
-                                
-                                subModel.isSubscriptionActive = customerInfo?.entitlements.all["tier 1"]?.isActive == true
-                                
-                            }
-                        } label: {
-                            Text("Restore purchases")
-                        }
+               
                         
                         
                         
@@ -92,71 +84,51 @@ struct SkiesPlusView: View {
                                         }
                                     }
                                 }
-                            }
-                            
-                            Button {
                                 
-                            } label: {
-                                VStack {
+                                
+                                Button {
                                     
-                                    Group {
-                                        HStack {
-                                            Spacer()
-                                            Text("Tier 2:")
-                                                .fontWeight(.bold)
-                                                .foregroundColor(.white)
-                                                .font(.largeTitle)
-                                            Spacer()
-                                            
-                                            Text("\nYou get access to...\n\n- Everything in Tier 1\n\n- Stickers\n\n - 2 more special emojis")
-                                                .foregroundColor(.white)
-                                                .fontWeight(.light)
-                                            Spacer()
+                                } label: {
+                                    VStack {
+                                        
+                                        Group {
+                                            HStack {
+                                                Spacer()
+                                                Text("Tier 2:")
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                                    .font(.largeTitle)
+                                                Spacer()
+                                                
+                                                Text("\nYou get access to...\n\n- Everything in Tier 1\n\n- Stickers\n\n - 2 more special emojis")
+                                                    .foregroundColor(.white)
+                                                    .fontWeight(.light)
+                                                Spacer()
+                                            }
                                         }
+                                        .background(LinearGradient(colors: [.blue, .purple], startPoint: .top, endPoint: .bottom))
+                                        .cornerRadius(10)
+                                        .frame(width: 300, height: 200)
                                     }
-                                    .background(LinearGradient(colors: [.blue, .purple], startPoint: .top, endPoint: .bottom))
-                                    .cornerRadius(10)
-                                    .frame(width: 300, height: 200)
                                 }
                             }
                             
-                            
-                            Text("* Once subscribed, you can access your benefits\naround the app (In messages, posts, settings etc.)\nCancel subscription in settings app.")
+                            Text("* Once subscribed, you can access your benefits\naround the app (In messages, posts, settings etc.)")
                                 .font(.caption)
                                 .foregroundColor(.white)
                             
                         } else {
+                            Spacer()
                             Text("You're subscribed!")
                                 .fontWeight(.bold)
+                            
+                            Spacer()
+                            
+                            Text("* Cancel subscription in the Settings app.")
+                                .fontWeight(.light)
+                                .font(.caption)
                         }
-                    } else {
-                        
-                     
-                        
-                       
-                      
-                     
-                  
-                        
-               
-                     
-                        Spacer()
-                        
-                        Spacer()
-                        Spacer()
-                        Spacer()
-                        Spacer()
-                        
-                        Spacer()
-                        Spacer()
-                        Spacer()
-                        Text("Coming soon...")
-                            .font(.system(size: 40))
-                            .fontWeight(.light)
-                            .foregroundColor(.white)
-                        
-                        Spacer()
-                    }
+                    
                 }
             }
             .onAppear {

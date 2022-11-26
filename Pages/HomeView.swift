@@ -47,6 +47,7 @@ struct HomeView: View {
     @State var thirdWord = ""
     @State var fourthWord = ""
     @AppStorage("savedProfilePic") var savedProfilePic = ""
+    @State var firstie = false
     @State var fifthWord = ""
     @State var ages = ["Everyone","18 and above"]
     @State var age = "Everyone"
@@ -537,23 +538,7 @@ struct HomeView: View {
            
                     .onAppear {
                         
-                        commModel.getData()
-                        let titles = ["It's Skies time!", "Let's talk!", "Your friends and communities...", "The sky's the limit!", "You could discover something new on Skies"]
-                        let bodies = ["Why not hop over to Skies and connect with communities you care about? It'll be fun!", "Skies is a great place to talk, chill and just have fun. Hop over and let's hangout", "The party's not fun without you! Hop over to Skies and talk.", "Hop over to Skies and hangout. Everyone's waiting for you!", "Skies can be a great place to learn new things, hangout and discover new people. Come on, what're you waiting for!"]
-                        let content = UNMutableNotificationContent()
-                        content.title = titles.randomElement() ?? ""
-                        content.body = bodies.randomElement() ?? ""
-                        content.sound = UNNotificationSound.default
-
-                        // show this notification five seconds from now
-                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7200, repeats: true)
-
-                        // choose a random identifier
-                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-                        // add our notification request
-                        UNUserNotificationCenter.current().add(request)
-                        if donie == false {
+                                               if donie == false {
                             if commu.count < 2 {
                                 
                                 for comie in commModel.list {
@@ -581,34 +566,30 @@ struct HomeView: View {
     
   
 
-        init() { // On this initialisation of this view, we get the data
-       
-            model.getData()
-            commModel.getData()
-            for userie in model.list {
-                
-                if userie.username == username {
-                    username = userie.username
-                    person = userie.person
-                    savedBio = userie.bio
-                    savedFavourites = userie.favourites
-                    savedHobbies = userie.hobbies
-                    savedProfilePic = userie.pfp
-                    savedMediaLink = userie.mediaLink
-                }
-            }
+    init() { // On this initialisation of this view, we get the data
+        
+        model.getData()
+        commModel.getData()
+        for userie in model.list {
             
-            veryFirstTime = false
-            
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                if success {
-                    print("All set!")
-                } else if let error = error {
-                    print(error.localizedDescription)
-                }
+            if userie.username == username {
+                username = userie.username
+                person = userie.person
+                savedBio = userie.bio
+                savedFavourites = userie.favourites
+                savedHobbies = userie.hobbies
+                savedProfilePic = userie.pfp
+                savedMediaLink = userie.mediaLink
             }
         }
-   
+        
+        veryFirstTime = false
+        
+        
+        
+        firstie = false
+    }
+    
 }
 
 struct HomeView_Previews: PreviewProvider {
