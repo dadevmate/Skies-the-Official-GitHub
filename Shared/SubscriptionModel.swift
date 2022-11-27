@@ -18,3 +18,13 @@ class SubscriptionModel : ObservableObject {
         }
     }
 }
+
+class SubscriptionModelTwo : ObservableObject {
+    @Published var isSubscriptionActive = false
+    
+    init() {
+        Purchases.shared.getCustomerInfo { (customerInfo, error) in
+            self.isSubscriptionActive = customerInfo?.entitlements.all["tier 2"]?.isActive == true
+        }
+    }
+}

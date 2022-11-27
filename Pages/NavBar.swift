@@ -47,7 +47,7 @@ struct NavBar: View {
                                 Label("Social", systemImage: "person.3")
                             }
                         
-                        SkiesPlusView(subModel: SubscriptionModel())
+                        SkiesPlusView(subModel: SubscriptionModel(), subModelTwo: SubscriptionModelTwo())
                             .tabItem {
                                 Label("Skies+", systemImage: "s.circle.fill")
                             }

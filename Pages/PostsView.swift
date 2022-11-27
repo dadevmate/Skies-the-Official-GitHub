@@ -199,9 +199,12 @@ struct PostsView: View {
                                 
                                 
                             }
+                         
                             
-                            BannerAd(unitId: "ca-app-pub-6142532326654511/4548690533")
-                                .frame(width: 300, height: 300)
+          
+                                BannerAd(unitId: "ca-app-pub-6142532326654511/4548690533")
+                                    .frame(width: 300, height: 300)
+                            
                             
                         }
                         .toolbar {

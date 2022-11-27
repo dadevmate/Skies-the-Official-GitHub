@@ -86,6 +86,21 @@ class UserModel: ObservableObject {
         } // I can update multiple pieces of data in my document or just 1
     }
     
+    func updateSubscription(userUpdate: UserData, edit: String) {
+        // Get a reference to the database
+        let db = Firestore.firestore()
+        // Set the data to update
+        db.collection("users").document(userUpdate.id).setData(["subscription": "\(edit)"], merge: true) { error in
+            // the merge specifies whether we should blow away all data in the document and the replace with new data, or keep the data that isn't being replaced and only change the data that we want to update
+            
+            
+            // Check for errors
+            
+            if error == nil {
+                self.getData()
+            }
+        } // I can update multiple pieces of data in my document or just 1
+    }
     
     func updateMediaLink(userUpdate: UserData, edit: String) {
         // Get a reference to the database
@@ -120,12 +135,12 @@ class UserModel: ObservableObject {
     }
  
 
-    func addData(username: String, person: String, password:String, bio:String, favourites:String, hobbies: String, mediaLink: String, pfp: String, verified: Bool) {
+    func addData(username: String, person: String, password:String, bio:String, favourites:String, hobbies: String, mediaLink: String, pfp: String, verified: Bool, subscription: String) {
         // Get a reference to the database
         let db = Firestore.firestore()
         
         // Add a document to a collection
-        db.collection("users").addDocument(data: ["username": username, "person": person, "password": password, "bio": bio, "favourites": favourites, "hobbies": hobbies, "mediaLink": mediaLink, "pfp": pfp, "verified": verified]) { error in
+        db.collection("users").addDocument(data: ["username": username, "person": person, "password": password, "bio": bio, "favourites": favourites, "hobbies": hobbies, "mediaLink": mediaLink, "pfp": pfp, "verified": verified, "subscription": subscription]) { error in
             // We don't have to worry about the ID for this new document because it'll automatically be generated
             
             // data is stored in a dictionary, with the data label followed by the value, which in this
@@ -174,7 +189,7 @@ class UserModel: ObservableObject {
                         
                         
                       // Create a Todo item for each document returned
-                        return UserData(id: doc.documentID, username: doc["username"] as? String ?? "", person: doc["person"] as? String ?? "", password: doc["password"] as? String ?? "", bio: doc["bio"] as? String ?? "", favourites: doc["favourites"] as? String ?? "", hobbies: doc["hobbies"] as? String ?? "",  mediaLink: doc["mediaLink"] as? String ?? "", pfp: doc["pfp"] as? String ?? "", verified: doc["verified"] as? Bool ?? false)
+                        return UserData(id: doc.documentID, username: doc["username"] as? String ?? "", person: doc["person"] as? String ?? "", password: doc["password"] as? String ?? "", bio: doc["bio"] as? String ?? "", favourites: doc["favourites"] as? String ?? "", hobbies: doc["hobbies"] as? String ?? "",  mediaLink: doc["mediaLink"] as? String ?? "", pfp: doc["pfp"] as? String ?? "", verified: doc["verified"] as? Bool ?? false, subscription: doc["subscription"] as? String ?? "")
                     }
                     }
                 }

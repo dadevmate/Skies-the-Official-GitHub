@@ -18,4 +18,5 @@ struct UserData: Identifiable, Hashable {
     var mediaLink: String
     var pfp: String
     var verified: Bool
+    var subscription: String
 }
