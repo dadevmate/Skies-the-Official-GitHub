@@ -51,10 +51,18 @@ struct CommSearchView: View {
                                 
                                 VStack {
                                     Spacer()
-                                    Text("\(comm.name)")
-                                        .foregroundColor(Color.primary)
-                                        .fontWeight(.bold)
-                                        .font(.title)
+                                    
+                                    HStack {
+                                        Text("\(comm.name)")
+                                            .foregroundColor(Color.primary)
+                                            .fontWeight(.bold)
+                                            .font(.title)
+                                        if comm.id == "izCqkreUbLNhzM7QXZ7u" {
+                                            Image(systemName: "checkmark.seal.fill")
+                                                .foregroundColor(.gray)
+                                                .font(.title)
+                                        }
+                                    }
                                     Spacer()
                                     Text("\(comm.fiveWords)")
                                         .foregroundColor(Color.primary)
@@ -89,6 +97,7 @@ struct CommSearchView: View {
                         
                     }
                     BannerAd(unitId: "ca-app-pub-6142532326654511/4548690533")
+                          .frame(width: 300, height: 50)
                 }
                 .navigationTitle("Communities")
             }

@@ -39,22 +39,14 @@ class MessageModel: ObservableObject {
         
     }
     
-    func order(comm: CommData) -> Query {
-        let db = Firestore.firestore()
-        // My top posts by number of stars
-        let myTopPostsQuery = db.collection("communities").document(comm.id).collection("messages").order(by: "timestamp")
-        
-      
-     
-        return myTopPostsQuery
-    }
+   
 
     
-    func addData(comm: CommData, username: String, message: String, commId: String, time: String, pfp: String, image: String, timestamp: Int, verified: Bool) {
+    func addData(comm: CommData, username: String, message: String, commId: String, time: String, pfp: String, image: String, timestamp: Int, verified: Bool, subscription: String) {
         // Get a reference to the database
         let db = Firestore.firestore()
         // Add a document to a collection
-        db.collection("communities").document(comm.id).collection("messages").addDocument(data: ["username": username, "message": message, "commId": commId, "time": time, "pfp": pfp, "image": image, "timestamp": timestamp, "verified": verified]) { error in
+        db.collection("communities").document(comm.id).collection("messages").addDocument(data: ["username": username, "message": message, "commId": commId, "time": time, "pfp": pfp, "image": image, "timestamp": timestamp, "verified": verified, "subscription": subscription]) { error in
             // We don't have to worry about the ID for this new document because it'll automatically be generated
             
             // data is stored in a dictionary, with the data label followed by the value, which in this
@@ -79,7 +71,7 @@ class MessageModel: ObservableObject {
     
     func getData(comm: CommData) {
         
-
+    
         
         
         // Get a reference to the database
@@ -101,10 +93,10 @@ class MessageModel: ObservableObject {
                     // it assigns all the documents to the variable, list, which saved it in an array
                         
                             
-                    
+                         
                         
                       // Create a Todo item for each document returned
-                            return MessageData(id: doc.documentID, username: doc["username"] as? String ?? "", message: doc["message"] as? String ?? "", commId: comm.id, time: doc["time"] as? String ?? "", pfp: doc["pfp"] as? String ?? "", image: doc["image"] as? String ?? "", timestamp: doc["timestamp"] as? Int ?? 0, verified: doc["verified"] as? Bool ?? false)
+                            return MessageData(id: doc.documentID, username: doc["username"] as? String ?? "", message: doc["message"] as? String ?? "", commId: comm.id, time: doc["time"] as? String ?? "", pfp: doc["pfp"] as? String ?? "", image: doc["image"] as? String ?? "", timestamp: doc["timestamp"] as? Int ?? 0, verified: doc["verified"] as? Bool ?? false, subscription: doc["subscription"] as? String ?? "")
                          
                     }
                     }

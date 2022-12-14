@@ -13,8 +13,10 @@ struct UsersView: View {
     @ObservedObject var model = UserModel()
 @State var sureFollow = false
     @StateObject var network = Network()
-    @State private var followers: [String] = UserDefaults.standard.object(forKey: "followers") as? [String] ?? []
+    @State private var followers: [String] = UserDefaults.standard.object(forKey: "followers") as? [String] ?? [""]
     @State var alreadyFollow = false
+    @State private var blocked: [String] = UserDefaults.standard.object(forKey: "blocked") as? [String] ?? [""]
+@State var blockSuccess = false
     var body: some View {
       
             if back == true {
@@ -36,8 +38,11 @@ struct UsersView: View {
                                         Spacer()
                                         Button {
                                             
-                                            
-                                            sureFollow = true
+                                            if followers.contains(username) != true {
+                                                sureFollow = true
+                                            } else if followers.contains(username) {
+                                                alreadyFollow = true
+                                            }
                                             
                                         } label: {
                                             VStack {
@@ -52,59 +57,92 @@ struct UsersView: View {
                                                 
                                             }
                                         }
+                                        
                                         .confirmationDialog("Are you sure about this?", isPresented: $sureFollow, titleVisibility: .visible) {
                                             
-                                            if followers.contains(username) != true {
+                       
                                                 
                                                 Button("Yes, I wanna follow") {
                                                     
                                                     
                                                     
-                                                    if followers.contains(username) {
-                                                        
-                                                    } else {
+                                                
                                                         followers.append(username)
                                                         UserDefaults.standard.set(followers, forKey: "followers")
-                                                        print(followers)
-                                                    }
+                                                        print("FOLLOWING: \(followers)")
+                                                    
                                                     
                                                     
                                                 }
-                                            } else if followers.contains(username) {
+                          
                                                 
-                                                Button("Unfollow") {
-                                                    if followers.contains(username) {
-                                                        alreadyFollow = true
-                                                        
-                                                    }
+                                        
+                                            Button("Block/Unblock user") {
+                                                
+                                                if blocked.contains(username) == false {
+                                                    blocked.append(username)
+                                                    UserDefaults.standard.set(blocked, forKey: "blocked")
+                                                    blockSuccess = true
+                                                    print(blocked)
+                                                } else {
+                                                    blocked = blocked.filter {$0 != username}
+                                                    UserDefaults.standard.set(blocked, forKey: "blocked")
+                                                    blockSuccess = true
+                                                    print(blocked)
                                                 }
+                                                
                                             }
                                      
                                             
                                             
                                         } message: {
                                             
-                                            if followers.contains(username) != true {
+                      
                                                 
                                                 Text("You'll be able to keep up with them more easily. You'll receive exclusive updates from them that are only visible to people who follow them. You can see those updates from the Socialise page.")
-                                            } else if followers.contains(username) {
-                                                
-                                                Text("You will no longer receive exclusive updates from this user. About posts from this user will not show up in your special feed.")
-                                            }
+                                    
+                             
+                                            
                                             
                                         }
-                                        .confirmationDialog("Unfollow this user?", isPresented: $alreadyFollow, titleVisibility: .visible) {
-                                            
-                                            Button("Yes, unfollow!") {
-                                                followers.removeAll { follower in
-                                                    return follower == username
-                                                }
-                                                print("SUCCCCESSSSS")
-                                                print(followers)
-                                            }
+                                        .alert("Success!", isPresented: $blockSuccess) {
                                             
                                         } message: {
-                                            Text("You'll no longer receive exclusive updates from this user if you unfollow them.")
+                                            
+                                            if blocked.contains(username) == true {
+                                                Text("This user has been successfully blocked. You will no longer receive posts, comments, about posts and videos from this user. Please restart the app for changes to take effect.")
+                                            } else {
+                                                Text("This user has been successfully unblocked. Please restart the app for changes to take effect.")
+                                            }
+                                        }
+                                        .confirmationDialog("Are you sure about this?", isPresented: $alreadyFollow, titleVisibility: .visible) {
+                                            Button("Unfollow") {
+                                             
+                                                    followers.removeAll { follower in
+                                                        return follower == username
+                                                    }
+                                                    UserDefaults.standard.set(followers, forKey: "followers")
+                                                print("UNFOLLOWING: \(followers)")
+                                                
+                                            }
+                                            
+                                            Button("Block/Unblock user") {
+                                                
+                                                if blocked.contains(username) == false {
+                                                    blocked.append(username)
+                                                    UserDefaults.standard.set(blocked, forKey: "blocked")
+                                                    blockSuccess = true
+                                                    print(blocked)
+                                                } else {
+                                                    blocked = blocked.filter {$0 != username}
+                                                    UserDefaults.standard.set(blocked, forKey: "blocked")
+                                                    blockSuccess = true
+                                                    print(blocked)
+                                                }
+                                            }
+                                        } message: {
+                                            
+                                            Text("You will no longer receive exclusive updates from this user. About posts from this user will not show up in your special feed.")
                                         }
                                         Spacer()
                                         Button {
@@ -120,7 +158,7 @@ struct UsersView: View {
                                 }
                                 
                                 BannerAd(unitId: "ca-app-pub-6142532326654511/4548690533")
-                                    .frame(width: 300, height: 50)
+                                      .frame(width: 300, height: 50)
                                 
                                 
                             }

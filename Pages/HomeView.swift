@@ -7,6 +7,10 @@
 
 import SwiftUI
 import RevenueCat
+import Firebase
+import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 var num = 0
 var thisComm = CommData(id: "", name: "", pic: "", about: "", restricted: "", fiveWords: "", reported: false)
@@ -30,10 +34,13 @@ struct HomeView: View {
     @AppStorage("savedHobbies") var savedHobbies = ""
     @AppStorage("savedMediaLink") var savedMediaLink = ""
     @AppStorage("favourites") var favourites = ""
+ 
+    @State var colorie = Color.black
     @AppStorage("veryFirstTime") var veryFirstTime = true
-
+    @State private var followers: [String] = UserDefaults.standard.object(forKey: "followers") as? [String] ?? [""]
     @State var exactTime = false
     @State var createCommunity = false
+    @State private var blocked: [String] = UserDefaults.standard.object(forKey: "blocked") as? [String] ?? [""]
     @State var commName = ""
     @State var searchedCommView = false
     @State var commPic = ""
@@ -178,12 +185,14 @@ struct HomeView: View {
                                                             
                                                             Section {
                                                                 TextField("Community name", text: $commName)
+                                                                    .focused($focus)
                                                             }
                                                             
                                                             
                                                             
                                                             Section {
                                                                 TextField("Community icon link", text: $commPic)
+                                                                    .focused($focus)
                                                             } footer: {
                                                                 Text("* Non-copyright")
                                                             }
@@ -192,6 +201,7 @@ struct HomeView: View {
                                                         Group {
                                                             Section {
                                                                 TextEditor(text: $about)
+                                                                    .focused($focus)
                                                             } header: {
                                                                 Text("Community Description (include the rules)")
                                                             }
@@ -216,25 +226,31 @@ struct HomeView: View {
                                                         Group {
                                                             Section {
                                                                 TextField("Word 1", text: $firstWord)
+                                                                    .focused($focus)
                                                             }
                                                             Section {
                                                                 TextField("Word 2", text: $secondWord)
+                                                                    .focused($focus)
                                                             }
                                                             Section {
                                                                 TextField("Word 3", text: $thirdWord)
+                                                                    .focused($focus)
                                                             }
                                                             Section {
                                                                 TextField("Word 4", text: $fourthWord)
+                                                                    .focused($focus)
                                                             }
                                                             
                                                             Section {
                                                                 TextField("Word 5", text: $fifthWord)
+                                                                    .focused($focus)
                                                             }
                                                             
                                                             HStack {
                                                                 Spacer()
                                                                 Button("Submit") {
-                                                                    
+                                                                
+                                                                
                                                                     // code from here again
                                                                     if person == "teenager" && age == "18 and above" {
                                                                         yourNotOld = true
@@ -300,6 +316,11 @@ struct HomeView: View {
                                                 }
                                             }
                                             
+                                            if focus == true {
+                                                Button("Done") {
+                                                    focus = false
+                                                }
+                                            }
                                             
                                             Spacer()
                                             
@@ -334,7 +355,7 @@ struct HomeView: View {
                                             
                                             for comm in commModel.list {
                                               
-                                                if comm.name == commeSearched || comm.name.contains(commeSearched){
+                                                if comm.name.lowercased() == commeSearched.lowercased() || comm.name.lowercased().contains(commeSearched.lowercased()){
                                                     
                                                     
                                                     commFound.append(comm)
@@ -371,131 +392,148 @@ struct HomeView: View {
                                     }
                                 
                                     Spacer()
-                                    Text("   Scroll up and refresh this screen to\nload more communities at the bottom")
+                                    Text("Swipe down and refresh this screen in\n↓ the box to load more communities ↓")
                                         .fontWeight(.bold)
                                         .foregroundColor(.gray)
                                         .font(.caption)
-                                      
-                                    NavigationView {
-                                        
-                                  
-                                        List(commu) { community in
+                             
+                                     
+                                        NavigationView {
                                             
-                                            if community.name != "" {
+                                            
+                                            List(commu) { community in
                                                 
-                                                Section {
-                                                    HStack {
-                                                        
-                                                        Button {
+                                                if community.name != "" {
+                                                    
+                                                    Section {
+                                                        HStack {
                                                             
-                                                            for userie in model.list {
+                                                            Button {
                                                                 
-                                                                if userie.username == username {
+                                                                for userie in model.list {
                                                                     
-                                                                    if community.restricted == "18 and above" && userie.person == "teenager" {
-                                                                        notAllowed = true
-                                                                    } else {
+                                                                    if userie.username.lowercased() == username.lowercased() {
                                                                         
-                                                                        thisComm = community
-                                                                        openComm = true
+                                                                        if community.restricted == "18 and above" && userie.person == "teenager" {
+                                                                            notAllowed = true
+                                                                        } else {
+                                                                            
+                                                                            thisComm = community
+                                                                            openComm = true
+                                                                        }
                                                                     }
                                                                 }
-                                                            }
-                                                        } label: {
-                                                            HStack {
-                                                                
-                                                                AsyncImage(url: URL(string: "\(community.pic)")) { image in image
-                                                                        .resizable()
-                                                                        .scaledToFit()
-                                                                } placeholder: {
-                                                                    ProgressView()
-                                                                        .progressViewStyle(.circular)
-                                                                }
-                                                                .frame(width: 50, height: 50)
-                                                                .clipShape(Circle())
-                                                                
-                                                                Spacer()
-                                                                
-                                                                VStack {
-                                                                    Spacer()
-                                                                    Text("\(community.name)")
-                                                                        .foregroundColor(Color.primary)
-                                                                        .fontWeight(.bold)
-                                                                        .font(.title)
-                                                                    Spacer()
-                                                                    Text("\(community.fiveWords)")
-                                                                        .foregroundColor(Color.primary)
-                                                                        .fontWeight(.light)
+                                                            } label: {
+                                                                HStack {
+                                                                    
+                                                                    AsyncImage(url: URL(string: "\(community.pic)")) { image in image
+                                                                            .resizable()
+                                                                            .scaledToFit()
+                                                                    } placeholder: {
+                                                                        ProgressView()
+                                                                            .progressViewStyle(.circular)
+                                                                    }
+                                                                    .frame(width: 50, height: 50)
+                                                                    .clipShape(Circle())
+                                                                    
+                                                                    
                                                                     
                                                                     Spacer()
-                                                                }
-                                                                
-                                                                Spacer()
-                                                                Spacer()
-                                                                
-                                                                if community.restricted == "18 and above" {
+                                                                    
                                                                     VStack {
-                                                                        Image(systemName: "person.text.rectangle.fill")
-                                                                            .foregroundColor(.red)
+                                                                        Spacer()
+                                                                        
+                                                                        HStack {
+                                                                            Text("\(community.name)")
+                                                                                .foregroundColor(Color.primary)
+                                                                                .fontWeight(.bold)
+                                                                                .font(.title)
+                                                                            
+                                                                            if community.id == "5lXw4ap7feRKN83rhIcw" {
+                                                                                Image(systemName: "checkmark.seal.fill")
+                                                                                    .foregroundColor(.gray)
+                                                                                    .font(.title)
+                                                                            }
+                                                                            
+                                                                        }
+                                                                        Spacer()
+                                                                        Text("\(community.fiveWords)")
+                                                                            .foregroundColor(Color.primary)
+                                                                            .fontWeight(.light)
+                                                                        
                                                                         Spacer()
                                                                     }
+                                                                    
+                                                                    Spacer()
+                                                                    Spacer()
+                                                                    
+                                                                    if community.restricted == "18 and above" {
+                                                                        VStack {
+                                                                            Image(systemName: "person.text.rectangle.fill")
+                                                                                .foregroundColor(.red)
+                                                                            Spacer()
+                                                                        }
+                                                                    }
+                                                                    
+                                                                    Spacer()
+                                                                }
+                                                            }
+                                                            .confirmationDialog("You're not old enough", isPresented: $notAllowed, titleVisibility: .visible) {
+                                                                
+                                                            } message: {
+                                                                Text("This community was meant for people 18 and above. You're not old enough to talk inside it, yet.")
+                                                            }
+                                                            .navigationTitle("Communities")
+                                                            
+                                                            
+                                                        }
+                                                        HStack {
+                                                            Spacer()
+                                                            Button {
+                                                                if favComms.contains(community.name) {
+                                                                    favComms.removeAll { fav in
+                                                                        return fav == community.name
+                                                                    }
+                                                                    
+                                                                    UserDefaults.standard.set(favComms, forKey: "favComms")
+                                                                } else {
+                                                                    favComms.append(community.name)
+                                                                    UserDefaults.standard.set(favComms, forKey: "favComms")
+                                                                }
+                                                            } label: {
+                                                                
+                                                                if favComms.contains(community.name) {
+                                                                    Image(systemName: "star.fill")
+                                                                        .font(.title)
+                                                                        .foregroundColor(.pink)
+                                                                } else {
+                                                                    Image(systemName: "star")
+                                                                        .font(.title)
+                                                                        .foregroundColor(.pink)
                                                                 }
                                                                 
-                                                                Spacer()
                                                             }
-                                                        }
-                                                        .confirmationDialog("You're not old enough", isPresented: $notAllowed, titleVisibility: .visible) {
-                                                            
-                                                        } message: {
-                                                            Text("This community was meant for people 18 and above. You're not old enough to talk inside it, yet.")
-                                                        }
-                                                        .navigationTitle("Communities")
-                                                        
-                                                 
-                                                    }
-                                                    HStack {
-                                                        Spacer()
-                                                        Button {
-                                                            if favComms.contains(community.name) {
-                                                                favComms.removeAll { fav in
-                                                                    return fav == community.name
-                                                                }
-                                                                
-                                                                UserDefaults.standard.set(favComms, forKey: "favComms")
-                                                            } else {
-                                                                favComms.append(community.name)
-                                                                UserDefaults.standard.set(favComms, forKey: "favComms")
-                                                            }
-                                                        } label: {
-                                                            
-                                                            if favComms.contains(community.name) {
-                                                                Image(systemName: "star.fill")
-                                                                    .font(.title)
-                                                                    .foregroundColor(.purple)
-                                                            } else {
-                                                                Image(systemName: "star")
-                                                                    .font(.title)
-                                                                    .foregroundColor(.purple)
-                                                            }
-                                                            
                                                         }
                                                     }
+                                                    .navigationViewStyle(.stack)
+                                                    
                                                 }
-                                                .navigationViewStyle(.stack)
-                                           
                                             }
-                                        }
-                                        
-                                        .onAppear {
-                                            network.checkConnection()
-                                            commModel.getData()
-                                        }
-                               
-                                        .refreshable {
                                             
-                                           
-                                            network.checkConnection()
-                              
+                                            .onAppear {
+                                                network.checkConnection()
+                                                commModel.getData()
+                                            }
+                                            
+                                            .refreshable {
+                                                
+                                                
+                                                colorie = Color.white
+                                          
+                                                
+                                                
+                                                network.checkConnection()
+                                                
                                                 commModel.getData()
                                                 model.getData()
                                                 
@@ -514,17 +552,20 @@ struct HomeView: View {
                                                     }
                                                 }
                                                 
-                                          
+                                                
+                                            }
+                                            
+                                            .onReceive(network.$connected, perform: { connected in
+                                                
+                                                print(connected)
+                                            })
+                                            
                                         }
-                                      
-                                        .onReceive(network.$connected, perform: { connected in
-                                          
-                                            print(connected)
-                                        })
+                                        .border(colorie)
+                                    
                                         
-                                    }
-                              
-                                  
+                                    
+                          
                                 }
                        
                              
@@ -537,6 +578,10 @@ struct HomeView: View {
                     
            
                     .onAppear {
+                        
+               
+                        commModel.getData()
+               
                         
                                                if donie == false {
                             if commu.count < 2 {
@@ -572,7 +617,7 @@ struct HomeView: View {
         commModel.getData()
         for userie in model.list {
             
-            if userie.username == username {
+            if userie.username.lowercased() == username.lowercased() {
                 username = userie.username
                 person = userie.person
                 savedBio = userie.bio

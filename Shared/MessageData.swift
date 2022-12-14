@@ -21,5 +21,6 @@ struct MessageData: Identifiable {
     var image: String
     var timestamp: Int
     var verified: Bool
+    var subscription: String
 }
 

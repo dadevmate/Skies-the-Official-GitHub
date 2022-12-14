@@ -13,10 +13,12 @@ struct CommentsView: View {
     @ObservedObject var model = UserModel()
     @ObservedObject var commentsModel = CommentsModel()
     @AppStorage("username") var username = ""
+    @AppStorage("subscription") var subscription = ""
     @State var cannotDeleteComm = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var timeRemaining = 0.5
-    
+    @State var timeRemaining = 3
+    @State private var blocked: [String] = UserDefaults.standard.object(forKey: "blocked") as? [String] ?? [""]
+    @State var myArr = [CommentData(id: "", username: "", comment: "", postId: "", pfp: "", verified: false, subscription: "", timestamp: 0)]
     var body: some View {
         NavigationView {
             List {
@@ -30,7 +32,7 @@ struct CommentsView: View {
                         Spacer()
                         Button("Comment") {
                             
-                            let actualComment = comment.trimmingCharacters(in: .whitespaces)
+                            let actualComment = comment.trimmingCharacters(in: .whitespacesAndNewlines)
                             
                             let components = Calendar.current.dateComponents([.day, .month, .year], from: Date.now)
                             
@@ -42,9 +44,9 @@ struct CommentsView: View {
                                         if comment != "" {
                                             
                                             if username == "Mister365b" ||  username == "mister365b"{
-                                                commentsModel.addData(post: thisPost, username: username, comment: actualComment, postId: thisPost.id, pfp: "\(day)/\(month)/\(year)", verified: true)
+                                                commentsModel.addData(post: thisPost, username: username, comment: actualComment, postId: thisPost.id, pfp: "\(day)/\(month)/\(year)", verified: true, subscription: subscription, timestamp: Int(NSDate().timeIntervalSince1970))
                                             } else {
-                                                commentsModel.addData(post: thisPost, username: username, comment: actualComment, postId: thisPost.id, pfp: "\(day)/\(month)/\(year)", verified: false)
+                                                commentsModel.addData(post: thisPost, username: username, comment: actualComment, postId: thisPost.id, pfp: "\(day)/\(month)/\(year)", verified: false, subscription: subscription, timestamp: Int(NSDate().timeIntervalSince1970))
                                             }
                                         }
                                
@@ -68,58 +70,79 @@ struct CommentsView: View {
                 }
                 
                 
-                ForEach(commentsModel.list) { comment in
+                ForEach(myArr) { comment in
                     
+            
                     
+                        if blocked.contains(where: {$0.contains(comment.username)}) == false {
+                        
                         Section {
-                            HStack {
-                                
-                           
-                                Text("\(comment.username)")
-                                    .fontWeight(.bold)
-                                if comment.verified == true {
-                                    Image(systemName: "checkmark.seal.fill")
-                                        .foregroundColor(.blue)
-                                }
-                                Spacer()
-                                Text("\(comment.pfp)")
-                            }
-                            Text("\(comment.comment)")
-                                .fontWeight(.light)
+                        HStack {
                             
-                            if comment.username == username {
-                                Button {
-                                    
-                                    if username == comment.username {
-                                        commentsModel.deleteData(thepost: thisPost, commentToDelete: comment)
-                                    } else if username == "Mister365b" || username == "mister365b" {
-                                        commentsModel.deleteData(thepost: thisPost, commentToDelete: comment)
-                                    } else {
-                                        cannotDeleteComm = true
-                                    }
-                                } label: {
-                                    Image(systemName: "trash.fill")
-                                        .font(.title2)
+                            
+                            Text("\(comment.username)")
+                                .fontWeight(.bold)
+                            if comment.verified == true {
+                                Image(systemName: "checkmark.seal.fill")
+                                    .foregroundColor(.blue)
+                            }
+                            
+                            if subscription != "none" {
+                                Image(systemName: "ticket.fill")
+                                    .foregroundColor(.purple)
+                            }
+                            
+                            Spacer()
+                            Text("\(comment.pfp)")
+                        }
+                        Text("\(comment.comment)")
+                            .fontWeight(.light)
+                        
+                        if comment.username.lowercased() == username.lowercased() {
+                            Button {
+                                
+                                if username.lowercased() == comment.username.lowercased() {
+                                    commentsModel.deleteData(thepost: thisPost, commentToDelete: comment)
+                                } else if username == "Mister365b" || username == "mister365b" {
+                                    commentsModel.deleteData(thepost: thisPost, commentToDelete: comment)
+                                } else {
+                                    cannotDeleteComm = true
                                 }
-                                .confirmationDialog("You can't delete this comment", isPresented: $cannotDeleteComm, titleVisibility: .visible) {
-                                    
-                                } message: {
-                                    Text("You can't delete this comment because you didn't create it.")
-                                }
+                            } label: {
+                                Image(systemName: "trash.fill")
+                                    .font(.title2)
+                            }
+                            .confirmationDialog("You can't delete this comment", isPresented: $cannotDeleteComm, titleVisibility: .visible) {
+                                
+                            } message: {
+                                Text("You can't delete this comment because you didn't create it.")
                             }
                         }
-                    
+                    }
+                }
                 }
                 
             }
-           
+            .toolbar {
+                ToolbarItem(placement: .keyboard) {
+                    Button("Done") {
+                        focus = false
+                    }
+                    .foregroundColor(.blue)
+                }
+            }
             .refreshable {
                 commentsModel.getData(post: thisPost)
             }
             .navigationTitle("Comments")
             .onReceive(timer) { time in
                 commentsModel.getData(post: thisPost)
-                timeRemaining = 0.5
+                myArr = commentsModel.list.sorted { var1, var2 in
+                     
+                     var1.timestamp > var2.timestamp
+                     
+                 }
+                timeRemaining = 3
             }
         }
     }

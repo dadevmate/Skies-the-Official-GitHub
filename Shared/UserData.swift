@@ -8,10 +8,10 @@
 import Foundation
 
 struct UserData: Identifiable, Hashable {
-    var id:String
-    var username:String
-    var person:String
-    var password:String
+    var id: String
+    var username: String
+    var person: String
+    var password: String
     var bio: String
     var favourites: String
     var hobbies: String

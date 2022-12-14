@@ -26,6 +26,7 @@ struct SettingsView: View {
     @AppStorage("savedHobbies") var savedHobbies = ""
     @AppStorage("savedMediaLink") var savedMediaLink = ""
     @AppStorage("savedProfilePic") var savedProfilePic = ""
+    @AppStorage("subscription") var subscription = ""
     @State var bio = ""
     @AppStorage("newUser10") var newUser = true
     @State var favourites = ""
@@ -35,6 +36,7 @@ struct SettingsView: View {
     @State var aboutText = ""
     @State var aboutImageLink = ""
     @State var sureDelete = false
+
     @FocusState var focus:Bool
     @State var writeSomething = false
     @State var invalidLink = false
@@ -43,6 +45,7 @@ struct SettingsView: View {
     @State var profilePicLink = ""
     @State var sureLogOut = false
     @State var deleteText = ""
+    @State var premiumProfile = false
     var body: some View {
         
         
@@ -54,9 +57,111 @@ struct SettingsView: View {
                         List {
                             
                             Section {
+                          
+                         
+                                    HStack {
+                                        Spacer()
+                                        
+                                        
+                                        
+                                     
+                                            Button("Skies Avatars") {
+                                                premiumProfile = true
+                                            }
+                                            .foregroundColor(.purple)
+                                            .sheet(isPresented: $premiumProfile) {
+                                                NavigationView {
+                                                   
+                                                    List(model.list) { user in
+                                                        if user.username.lowercased() == username.lowercased() {
+                                                      
+                                                            Section {
+                                                                HStack {
+                                                                    Spacer()
+                                                                    Button {
+                                                                        model.updatePfp(userUpdate: user, edit: "Man")
+                                                                        savedProfilePic = "Man"
+                                                                        premiumProfile = false
+                                                                    } label: {
+                                                                        Image("Man")
+                                                                            .clipShape(Circle())
+                                                                    }
+                                                                    Spacer()
+                                                                }
+                                                            }
+                                                            
+                                                            Section {
+                                                                HStack {
+                                                                    Spacer()
+                                                                    Button {
+                                                                        model.updatePfp(userUpdate: user, edit: "Robot")
+                                                                        savedProfilePic = "Robot"
+                                                                        premiumProfile = false
+                                                                    } label: {
+                                                                        
+                                                                        
+                                                                        Image("Robot")
+                                                                            .clipShape(Circle())
+                                                                    }
+                                                                    Spacer()
+                                                                }
+                                                            }
+                                                            
+                                                            Section {
+                                                                HStack {
+                                                                    Spacer()
+                                                                    Button {
+                                                                        model.updatePfp(userUpdate: user, edit: "Alien")
+                                                                        savedProfilePic = "Alien"
+                                                                        premiumProfile = false
+                                                                    } label: {
+                                                                        Image("Alien")
+                                                                            .clipShape(Circle())
+                                                                    }
+                                                                    Spacer()
+                                                                }
+                                                            }
+                                                            
+                                                            Section {
+                                                                HStack {
+                                                                    Spacer()
+                                                                    Button {
+                                                                        model.updatePfp(userUpdate: user, edit: "Skeleton")
+                                                                        savedProfilePic = "Skeleton"
+                                                                        premiumProfile = false
+                                                                    } label: {
+                                                                        Image("Skeleton")
+                                                                            .clipShape(Circle())
+                                                                    }
+                                                                    Spacer()
+                                                                }
+                                                            }
+                                                            HStack {
+                                                                Spacer()
+                                                                Text("Screenshotting and redistributing this content\nwill result in instant termination of account.\nYou have been warned.")
+                                                                    .fontWeight(.ultraLight)
+                                                                    .font(.caption)
+                                                                Spacer()
+                                                            }
+                                                        }
+                                                 
+                                                   
+                                                        
+                                                    }
+                                                    .navigationTitle("Avatars")
+                                                 
+                                                }
+                                            }
+                                           
+                                            
+                                            
+                                        }
+                                    
                                 
                                 HStack {
                                     Spacer()
+                                    
+                                  
                                     Button("Log out") {
                                         sureLogOut = true
                                     }
@@ -70,8 +175,10 @@ struct SettingsView: View {
                                             savedHobbies = ""
                                             savedMediaLink = ""
                                             savedProfilePic = ""
-                                            
+                                          
                                             newUser = true
+                                            subscription = "none"
+                                        
                                         }
                                         
                                         Button("No") {
@@ -88,18 +195,34 @@ struct SettingsView: View {
                                     
                                     ForEach(model.list, id: \.self) { user in
                                         
-                                        if user.username == username {
-                                            AsyncImage(url: URL(string: "\(user.pfp)")) { image in image
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 150, height: 150)
-                                                    .clipShape(Circle())
-                                            } placeholder: {
-                                                Image(systemName: "person.fill")
-                                                    .font(.system(size: 70))
-                                                
-                                            }
+                                        if user.username.lowercased() == username.lowercased() {
                                             
+                                            if user.pfp == "Man" {
+                                                Image("Man")
+                                                    .clipShape(Circle())
+                                            } else if user.pfp == "Alien" {
+                                                Image("Alien")
+                                                    .clipShape(Circle())
+                                                
+                                                
+                                            } else if user.pfp == "Skeleton" {
+                                                Image("Skeleton")
+                                                    .clipShape(Circle())
+                                            } else if user.pfp == "Robot" {
+                                                Image("Robot")
+                                                    .clipShape(Circle())
+                                            } else {
+                                                AsyncImage(url: URL(string: "\(user.pfp)")) { image in image
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 150, height: 150)
+                                                        .clipShape(Circle())
+                                                } placeholder: {
+                                                    Image(systemName: "person.crop.circle")
+                                                        .font(.system(size: 90))
+                                                    
+                                                }
+                                            }
                                         }
                                     }
                                     
@@ -111,7 +234,7 @@ struct SettingsView: View {
                                 
                                 ForEach(model.list, id: \.self) { user in
                                     
-                                    if user.username == username {
+                                    if user.username.lowercased() == username.lowercased() {
                                         
                                         
                                         
@@ -160,16 +283,16 @@ struct SettingsView: View {
                                                     Button("Yes") {
                                                         if deleteText == username {
                                                             
-                                                          
+                                                          subscription = "none"
                                                             
                                                             for post in postsModel.list {
-                                                                if post.username == username {
+                                                                if post.username.lowercased() == username.lowercased() {
                                                                     postsModel.deleteData(postToDelete: post)
                                                                 }
                                                             }
                                                             
                                                             for about in aboutModel.list {
-                                                                if about.username == username {
+                                                                if about.username.lowercased() == username.lowercased() {
                                                                     aboutModel.deleteData(aboutToDelete: about)
                                                                 }
                                                             }
@@ -177,7 +300,7 @@ struct SettingsView: View {
                                                             for post in postsModel.list {
                                                                 
                                                                 for comment in commentsModel.list {
-                                                                    if comment.username == username {
+                                                                    if comment.username.lowercased() == username.lowercased() {
                                                                         commentsModel.deleteData(thepost: post, commentToDelete: comment)
                                                                     }
                                                                 }
@@ -185,13 +308,13 @@ struct SettingsView: View {
                                                             
                                                             for comm in commModel.list {
                                                                 for message in messageModel.list {
-                                                                    if message.username == username {
+                                                                    if message.username.lowercased() == username.lowercased() {
                                                                         messageModel.deleteData(theComm: comm, messageToDelete: message)
                                                                     }
                                                                 }
                                                             }
                                                             for userie in model.list {
-                                                                if userie.username == username {
+                                                                if userie.username.lowercased() == username.lowercased() {
                                                                     model.deleteData(user: userie)
                                                                     delUserModel.addData(username: userie.username)
                                                                     newUser = true
@@ -276,9 +399,19 @@ struct SettingsView: View {
                                 TextField("An image link (optional) (non-copyright)",text: $aboutImageLink)
                                     .focused($focus)
                                 
-                                
-                                TextEditor(text: $aboutText)
-                                    .focused($focus)
+                                ZStack {
+                                    
+                                    if aboutText.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+                                        HStack {
+                                            Text("Write your about here:")
+                                                .foregroundColor(.gray)
+                                                .fontWeight(.light)
+                                            Spacer()
+                                        }
+                                    }
+                                    TextEditor(text: $aboutText)
+                                        .focused($focus)
+                                }
                             }  header: {
                                 Text("Your about")
                             }
@@ -288,7 +421,7 @@ struct SettingsView: View {
                                     Button("Post") {
                                         
                                         if username != "" {
-                                            if aboutText.trimmingCharacters(in: .whitespaces) != "" {
+                                            if aboutText.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
                                                 sureAbout = true
                                             } else {
                                                 writeSomething = true
@@ -304,17 +437,17 @@ struct SettingsView: View {
                                         Button("Yes") {
                                             if username != "" {
                                                 
-                                                if aboutText.trimmingCharacters(in: .whitespaces) != "" {
+                                                if aboutText.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
                                                     let components = Calendar.current.dateComponents([.day, .month, .year], from: Date.now)
                                                     
                                                     let year = components.year ?? 0
                                                     let month = components.month ?? 0
                                                     let day = components.day ?? 0
-                                                    let actualAbout = aboutText.trimmingCharacters(in: .whitespaces)
+                                                    let actualAbout = aboutText.trimmingCharacters(in: .whitespacesAndNewlines)
                                                     
                                                     for userie in model.list {
-                                                        if userie.username == username {
-                                                            aboutModel.addData(username: username, about: actualAbout, date: "\(day)/\(month)/\(year)", reported: false, imageURL: aboutImageLink, pfp: "\(userie.pfp)", verified: userie.verified)
+                                                        if userie.username.lowercased() == username.lowercased() {
+                                                            aboutModel.addData(username: username, about: actualAbout, date: "\(day)/\(month)/\(year)", reported: false, imageURL: aboutImageLink, pfp: "\(userie.pfp)", verified: userie.verified, subscription: subscription, timestamp: Int(NSDate().timeIntervalSince1970))
                                                         }
                                                     }
                                                     aboutImageLink = ""
@@ -563,7 +696,7 @@ struct SettingsView: View {
         
         for userie in model.list {
             
-            if userie.username == username {
+            if userie.username.lowercased() == username.lowercased() {
                 username = userie.username
                 person = userie.person
                 savedBio = userie.bio

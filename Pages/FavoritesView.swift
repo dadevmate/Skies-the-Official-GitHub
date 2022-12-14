@@ -31,7 +31,7 @@ struct FavoritesView: View {
                 NavigationView {
                     
                     VStack {
-                        Text("Favourites don't save after you log out or delete the app")
+                        Text("Favourites don't save after you log out or delete the app.\nRestart app to update favourites.")
                             .foregroundColor(.gray)
                             .font(.caption)
                         List(favComms, id: \.self) { fav in
@@ -46,7 +46,7 @@ struct FavoritesView: View {
                                                 
                                                 for userie in model.list {
                                                     
-                                                    if userie.username == username {
+                                                    if userie.username.lowercased() == username.lowercased() {
                                                         
                                                         if community.restricted == "18 and above" && userie.person == "teenager" {
                                                             notAllowed = true
@@ -209,7 +209,7 @@ struct FavoritesView: View {
                                         
                                         for userie in model.list {
                                             
-                                            if userie.username == username {
+                                            if userie.username.lowercased() == username.lowercased() {
                                                 
                                                 if comm2.restricted == "18 and above" && userie.person == "teenager" {
                                                     notAllowed = true
@@ -282,7 +282,7 @@ struct FavoritesView: View {
                                         
                                         for userie in model.list {
                                             
-                                            if userie.username == username {
+                                            if userie.username.lowercased() == username.lowercased() {
                                                 
                                                 if comm3.restricted == "18 and above" && userie.person == "teenager" {
                                                     notAllowed = true
@@ -356,7 +356,7 @@ struct FavoritesView: View {
                                         
                                         for userie in model.list {
                                             
-                                            if userie.username == username {
+                                            if userie.username.lowercased() == username.lowercased() {
                                                 
                                                 if comm4.restricted == "18 and above" && userie.person == "teenager" {
                                                     notAllowed = true
@@ -429,7 +429,7 @@ struct FavoritesView: View {
                                         
                                         for userie in model.list {
                                             
-                                            if userie.username == username {
+                                            if userie.username.lowercased() == username.lowercased() {
                                                 
                                                 if comm5.restricted == "18 and above" && userie.person == "teenager" {
                                                     notAllowed = true
@@ -494,6 +494,11 @@ struct FavoritesView: View {
                                 
                             }
                             .navigationViewStyle(.stack)
+                        }
+                        .refreshable {
+                            network.checkConnection()
+                            commModel.getData()
+                            model.getData()
                         }
                         .onReceive(timer) { time in
                             

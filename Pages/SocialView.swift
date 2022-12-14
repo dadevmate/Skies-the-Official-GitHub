@@ -24,11 +24,15 @@ struct SocialView: View {
     @AppStorage("savedHobbies") var savedHobbies = ""
     @AppStorage("savedMediaLink") var savedMediaLink = ""
     @AppStorage("savedProfilePic") var savedProfilePic = ""
+    @AppStorage("subscription") var subscription = ""
     @State var postedText = ""
+    @State var videoHelp = false
     @State var usersView = false
     @State var noSuchUser = false
     @State var usersF: [String] = usersFound
     @State var posts: [String] = []
+    @State var videoLink = ""
+    @State var showReportedVideos = false
     @AppStorage("username") var username = ""
     @ObservedObject var postsModel = PostsModel()
     @State var surePost = false
@@ -45,8 +49,8 @@ struct SocialView: View {
     @State var editedAbout = ""
     @ObservedObject var aboutModel = AboutModel()
     @State var showReportedAbouts = false
-    @State var videoLink = ""
    
+    @ObservedObject var videoModel = VideoModel()
     @Environment(\.colorScheme) var colorScheme
     
     @State var swearWords = ["fuck", "sex", "fucking", "fucked", "nigga", "bitch", "nude", "naked", "genitals", "vagina", "penis", "sperm", "sperms", "sexual", "intercourse", "cunt", "chink", "nigger", "porn", "pornography", "pornhub", "bitching", "dick", "dicks", "virginity", "virgin", "pussy", "erect", "dildo"]
@@ -77,7 +81,7 @@ struct SocialView: View {
                                     
                                     for userie in model.list {
                                         print(model.list)
-                                        if userie.username == userSearched || userie.username.contains(userSearched){
+                                        if userie.username.lowercased() == userSearched.lowercased() || userie.username.lowercased().contains(userSearched.lowercased()){
                                             
                                             usersView = true
                                             
@@ -118,6 +122,7 @@ struct SocialView: View {
                                 HStack {
                                     
                                     TextField("An Image URL (optional)", text: $imageLink)
+                                        .focused($focus)
                                     Button {
                                         imageHelp = true
                                     } label: {
@@ -203,11 +208,11 @@ struct SocialView: View {
                                                 let year = components.year ?? 0
                                                 let month = components.month ?? 0
                                                 let day = components.day ?? 0
-                                                let actualPost = postedText.trimmingCharacters(in: .whitespaces)
+                                                let actualPost = postedText.trimmingCharacters(in: .whitespacesAndNewlines)
                                                 
                                                 for userie in model.list {
-                                                    if userie.username == username {
-                                                        postsModel.addData(username: username, post: actualPost, date: "\(day)/\(month)/\(year)", reported: false, imageURL: imageLink, pfp: "\(userie.pfp)", verified: userie.verified)
+                                                    if userie.username.lowercased() == username.lowercased() {
+                                                        postsModel.addData(username: username, post: actualPost, date: "\(day)/\(month)/\(year)", reported: false, imageURL: imageLink, pfp: "\(userie.pfp)", verified: userie.verified, subscription: subscription, timestamp: Int(NSDate().timeIntervalSince1970))
                                                     }
                                                 }
                                                 posts.append(actualPost)
@@ -290,7 +295,7 @@ struct SocialView: View {
                                                             }
                                                         }
                                                         
-                                                 
+                                                        
                                                         Text("\(post.username)")
                                                             .fontWeight(.bold)
                                                         Text("\(post.date)")
@@ -407,19 +412,137 @@ struct SocialView: View {
                                         
                                     }
                                     
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    Button {
+                                        showReportedVideos = true
+                                        videoModel.getData()
+                                    } label: {
+                                        Text("Reported videos")
+                                            .fontWeight(.bold)
+                                            .font(.title)
+                                            .foregroundColor(.red)
+                                    }
+                                    .sheet(isPresented: $showReportedVideos) {
+                                        
+                                        ScrollView {
+                                            
+                                            ForEach(videoModel.list) { about in
+                                                if about.reported == true {
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    VideoPlayer(player: AVPlayer(url:  URL(string: about.videoLink ?? "")!)) {
+                                                        
+                                                    }
+                                                    .frame(width: 300, height: 300)
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    Button("Delete this Video") {
+                                                        videoModel.deleteData(videoToDelete: about)
+                                                        
+                                                    }
+                                                    
+                                                    
+                                                    Button("Unreport this Video", role: .destructive) {
+                                                        videoModel.report(videoToUnreport: about, reportStatus: false)
+                                                    }
+                                                    
+                                                    
+                                                    
+                                                    
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
                                 }
-                                
-                                
-                                
                             }
                             Section {
                                 NavigationLink(destination: AboutView()) {
                                     Text("See special abouts from people you're following")
                                     
                                 }
-                                
+                            
                             }
                             
+                            Section {
+                                HStack {
+                                    TextField("Paste a video link", text: $videoLink)
+                                        .focused($focus)
+                                    Button {
+                                        videoHelp = true
+                                    } label: {
+                                        Image(systemName: "questionmark.app.fill")
+                                            .font(.title)
+                                    }
+                                    .sheet(isPresented: $videoHelp) {
+                                        VStack {
+                                            Spacer()
+                                            Spacer()
+                                            Text("Help with posting \n          videos")
+                                                .font(.title)
+                                                .fontWeight(.light)
+                                            
+                                            Spacer()
+                                            
+                                            Text("You can post a video by pasting it's\n link from the web in here. However, \n please do not post any copyrighted \n content. Preferably, you can post \n video you made/took from your other \n social media accounts here in mp4 format.\nStuff like YouTube links don't work,\nbecause they aren't direct video links. \n\n Please keep in mind not to post any \n NSFW content or anything that can be\n considered adultry or pornography. \n \n Failure to abide by these rules will \n lead to your account being \n banned/terminated. For more information \n on what's not allowed, please see our \n Terms of Service on our website. \n \n Let's keep Skies a fun place for \n everyone!")
+                                            Spacer()
+                                            Spacer()
+                                            Image(systemName: "hand.thumbsup.fill")
+                                                .font(.system(size: 90))
+                                            
+                                            
+                                            
+                                            Spacer()
+                                            Spacer()
+                                        }
+                                    }
+                                    
+                                }
+                                HStack {
+                                    Spacer()
+                                    Button("Post") {
+                                        
+                                        if videoLink.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+                                            if let u = URL(string: videoLink) {
+                                                let components = Calendar.current.dateComponents([.day, .month, .year], from: Date.now)
+                                                
+                                                let year = components.year ?? 0
+                                                let month = components.month ?? 0
+                                                let day = components.day ?? 0
+                                                
+                                                for user in model.list {
+                                                    
+                                                    if user.username.lowercased() == username.lowercased() {
+                                                        videoModel.addData(username: username, videoLink: videoLink, date: "\(day)/\(month)/\(year)", reported: false, pfp: savedProfilePic, verified: user.verified, subscription: subscription, timestamp: Int(NSDate().timeIntervalSince1970))
+                                                    }
+                                                }
+                                                
+                                                videoLink = ""
+                                            }
+                                        }
+                                    }
+                                    Spacer()
+                                }
+                            } footer: {
+                                Text("* Non-copyright videos only, mp4 video links preferred. Your video may not play/appear if you send a video link that's not in the correct format! Stuff like YouTube links don't work, because they aren't direct video links.")
+                            }
+                            
+                            Section {
+                                NavigationLink(destination: VideoView()) {
+                                    Text("Watch Videos")
+                                    
+                                }
+                            }
                          
                             
                         }
@@ -474,7 +597,7 @@ struct SocialView: View {
         aboutModel.getData()
         for userie in model.list {
             
-            if userie.username == username {
+            if userie.username.lowercased() == username.lowercased() {
                 username = userie.username
                 person = userie.person
                 savedBio = userie.bio

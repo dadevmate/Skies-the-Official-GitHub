@@ -17,4 +17,6 @@ struct PostsData: Identifiable {
     var reported: Bool
     var pfp: String
     var verified: Bool
+    var subscription: String
+    var timestamp: Int
 }

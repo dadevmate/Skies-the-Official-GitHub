@@ -70,12 +70,12 @@ class AboutModel: ObservableObject {
         
     }
     
-    func addData(username: String, about: String, date: String, reported: Bool, imageURL: String, pfp: String, verified: Bool) {
+    func addData(username: String, about: String, date: String, reported: Bool, imageURL: String, pfp: String, verified: Bool, subscription: String, timestamp: Int) {
         
         // Get a reference to the database
         let db = Firestore.firestore()
         // Add a document to a collection
-        db.collection("abouts").addDocument(data: ["username": username, "about": about, "date": date, "reported": reported, "imageURL": imageURL, "pfp": pfp, "verified": verified]) { error in
+        db.collection("abouts").addDocument(data: ["username": username, "about": about, "date": date, "reported": reported, "imageURL": imageURL, "pfp": pfp, "verified": verified, "subscription": subscription, "timestamp": timestamp]) { error in
             // We don't have to worry about the ID for this new document because it'll automatically be generated
             
             // data is stored in a dictionary, with the data label followed by the value, which in this
@@ -125,7 +125,7 @@ class AboutModel: ObservableObject {
                         
                         
                       // Create a Todo item for each document returned
-                            return AboutData(id: doc.documentID, username: doc["username"] as? String ?? "", about: doc["about"] as? String ?? "", date: doc["date"] as? String ?? "", imageURL: doc["imageURL"] as? String ?? "", reported: doc["reported"] as? Bool ?? false, pfp: doc["pfp"] as? String ?? "", verified: doc["verified"] as? Bool ?? false)
+                            return AboutData(id: doc.documentID, username: doc["username"] as? String ?? "", about: doc["about"] as? String ?? "", date: doc["date"] as? String ?? "", imageURL: doc["imageURL"] as? String ?? "", reported: doc["reported"] as? Bool ?? false, pfp: doc["pfp"] as? String ?? "", verified: doc["verified"] as? Bool ?? false, subscription: doc["subscription"] as? String ?? "", timestamp: doc["timestamp"] as? Int ?? 0)
                     }
                     }
                 }

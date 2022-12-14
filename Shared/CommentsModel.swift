@@ -41,11 +41,11 @@ class CommentsModel: ObservableObject {
     
 
     
-    func addData(post: PostsData, username: String, comment: String, postId: String, pfp: String, verified: Bool) {
+    func addData(post: PostsData, username: String, comment: String, postId: String, pfp: String, verified: Bool, subscription: String, timestamp: Int) {
         // Get a reference to the database
         let db = Firestore.firestore()
         // Add a document to a collection
-        db.collection("posts").document(post.id).collection("comments").addDocument(data: ["username": username, "comment": comment, "postId": postId, "pfp": pfp, "verified": verified]) { error in
+        db.collection("posts").document(post.id).collection("comments").addDocument(data: ["username": username, "comment": comment, "postId": postId, "pfp": pfp, "verified": verified, "subscription": subscription, "timestamp": timestamp]) { error in
             // We don't have to worry about the ID for this new document because it'll automatically be generated
             
             // data is stored in a dictionary, with the data label followed by the value, which in this
@@ -67,6 +67,8 @@ class CommentsModel: ObservableObject {
         }
         
     }
+    
+
     
     func getData(post: PostsData) {
         
@@ -95,7 +97,7 @@ class CommentsModel: ObservableObject {
                         
                         
                       // Create a Todo item for each document returned
-                            return CommentData(id: doc.documentID, username: doc["username"] as? String ?? "", comment: doc["comment"] as? String ?? "", postId: post.id, pfp: doc["pfp"] as? String ?? "", verified: doc["verified"] as? Bool ?? false)
+                            return CommentData(id: doc.documentID, username: doc["username"] as? String ?? "", comment: doc["comment"] as? String ?? "", postId: post.id, pfp: doc["pfp"] as? String ?? "", verified: doc["verified"] as? Bool ?? false, subscription: doc["subscription"] as? String ?? "", timestamp: doc["timestamp"] as? Int ?? 0)
                     }
                     }
                 }
@@ -109,4 +111,9 @@ class CommentsModel: ObservableObject {
         
     }
     
+
+
+
+
 }
+
